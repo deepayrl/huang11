@@ -1,0 +1,6 @@
+{
+  "name": "modaui华商生态平台",
+  "description": "modaui AI Commerce OS - The AI Operating System for Modern Commerce. Automated 24h client-acquisition marketing engine, smart retail inventory, and automated pay-workflows.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
