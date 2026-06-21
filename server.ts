@@ -31,15 +31,25 @@ async function startServer() {
   // 2. Dynamic SEO Template Page Renderer Routes (serving dynamic HTML blocks mapped out of database)
   // Format: /:lang/blog/:slug, /:lang/company/:slug, /:lang/city/:id, /:lang/industry/:id
   
-  app.get('/:lang/blog/:slug', (req, res) => {
-    const { lang, slug } = req.params;
-    const html = ArticleController.resolveHtmlBySlug(slug, lang);
-    if (!html) {
-      res.status(404).send("Article not found in database.");
-      return;
+  const SEO_CATEGORIES = ['blog', 'news', 'fashion', 'wiki', 'tools', 'download', 'erp', 'pos', 'payment'];
+
+  app.get('/:lang/:category/:slug', (req, res, next) => {
+    const { lang, category, slug } = req.params;
+    const isSupportedLang = ['en', 'it', 'zh', 'fr', 'de', 'es'].includes(lang);
+    const isSupportedCat = SEO_CATEGORIES.includes(category);
+    
+    if (isSupportedLang && isSupportedCat) {
+      const html = ArticleController.resolveHtmlBySlug(slug, lang, category);
+      if (html) {
+        res.setHeader('Content-Type', 'text/html');
+        res.send(html);
+        return;
+      } else {
+        res.status(404).send(`Article "${slug}" not found in database under category "${category}".`);
+        return;
+      }
     }
-    res.setHeader('Content-Type', 'text/html');
-    res.send(html);
+    next();
   });
 
   app.get('/:lang/company/:slug', (req, res) => {
@@ -76,15 +86,22 @@ async function startServer() {
   });
 
   // 2.2. Default English Dynamic Router variants (Omit /en/ prefix for default crawlers)
-  app.get('/blog/:slug', (req, res) => {
-    const { slug } = req.params;
-    const html = ArticleController.resolveHtmlBySlug(slug, 'en');
-    if (!html) {
-      res.status(404).send("Article not found in database.");
-      return;
+  app.get('/:category/:slug', (req, res, next) => {
+    const { category, slug } = req.params;
+    const isSupportedCat = SEO_CATEGORIES.includes(category);
+    
+    if (isSupportedCat) {
+      const html = ArticleController.resolveHtmlBySlug(slug, 'en', category);
+      if (html) {
+        res.setHeader('Content-Type', 'text/html');
+        res.send(html);
+        return;
+      } else {
+        res.status(404).send(`Article "${slug}" not found in database under default category "${category}".`);
+        return;
+      }
     }
-    res.setHeader('Content-Type', 'text/html');
-    res.send(html);
+    next();
   });
 
   app.get('/company/:slug', (req, res) => {

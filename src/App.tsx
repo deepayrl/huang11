@@ -2,7 +2,8 @@ import React, { useState, useId } from 'react';
 import { 
   Sparkles, ShieldCheck, HelpCircle, ArrowRight, Zap, Play, Check, 
   MessageSquare, User, Calendar, Mail, FileText, Smartphone, LayoutGrid, 
-  Database, HelpCircle as HelpIcon, ChevronRight, CheckCircle2, Lock, X, Menu, Globe
+  Database, HelpCircle as HelpIcon, ChevronRight, CheckCircle2, Lock, X, Menu, Globe,
+  Cloud
 } from 'lucide-react';
 
 import { Language, BlogPost } from './types';
@@ -17,11 +18,35 @@ import GrowthFactory from './components/GrowthFactory';
 import AiWikiGlossary from './components/AiWikiGlossary';
 import AiPromptsHub from './components/AiPromptsHub';
 import AiCaseStudies from './components/AiCaseStudies';
+import DriveWorkspace from './components/DriveWorkspace';
 
 export default function App() {
   const [lang, setLang] = useState<Language>('en');
-  const [currentRoute, setCurrentRoute] = useState<'home' | 'solutions' | 'compare' | 'blog' | 'docs' | 'factory' | 'wiki' | 'prompts' | 'cases'>('home');
+  const [currentRoute, setCurrentRoute] = useState<'home' | 'solutions' | 'compare' | 'blog' | 'docs' | 'factory' | 'wiki' | 'prompts' | 'cases' | 'drive'>('home');
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  // Active state variables for interactive elements
+  const [selectedBlog, setSelectedBlog] = useState<BlogPost | null>(null);
+  const [dossierTopic, setDossierTopic] = useState<'about' | 'careers' | 'press' | 'partners' | 'offices' | 'privacy' | 'terms' | null>(null);
+  const [showVideoModal, setShowVideoModal] = useState(false);
+  const [showDemoModal, setShowDemoModal] = useState(false);
+  const [demoEmail, setDemoEmail] = useState('');
+  const [demoCompanyName, setDemoCompanyName] = useState('');
+  const [demoSuccess, setDemoSuccess] = useState(false);
+  
+  // Interactive Flowchart Active Node Trigger
+  const [activeWorkflowNode, setActiveWorkflowNode] = useState<string>('customer');
+
+  // AI Sales Agent Chat window states
+  const [aiChatOpen, setAiChatOpen] = useState(false);
+  const [aiChatMessages, setAiChatMessages] = useState<Array<{ sender: 'agent' | 'user'; text: string }>>([
+    { sender: 'agent', text: 'Hi! I am the modaui AI Sales Assistant. How can I help grow your business today?' }
+  ]);
+  const [leadMailSubmitted, setLeadMailSubmitted] = useState(false);
+  const [potentialEmail, setPotentialEmail] = useState('');
+
+  // Pricing Interval Toggle
+  const [pricePeriod, setPricePeriod] = useState<'monthly' | 'yearly'>('monthly');
 
   // Real URL SEO Synchronizer (Real-time dynamic route mapping)
   React.useEffect(() => {
@@ -31,7 +56,7 @@ export default function App() {
       let parsedRoute: typeof currentRoute = 'home';
       
       const supportedLangs = ['en', 'it', 'zh', 'fr', 'de', 'es'];
-      const validRoutes = ['home', 'solutions', 'compare', 'blog', 'docs', 'factory', 'wiki', 'prompts', 'cases'];
+      const validRoutes = ['home', 'solutions', 'compare', 'blog', 'docs', 'factory', 'wiki', 'prompts', 'cases', 'drive'];
       
       if (supportedLangs.includes(pathSegs[0])) {
         parsedLang = pathSegs[0] as Language;
@@ -65,6 +90,9 @@ export default function App() {
     if (currentRoute !== 'home') {
       targetPath += `/${currentRoute}`;
     }
+    if (selectedBlog) {
+      targetPath += `/blog/${selectedBlog.slug}`;
+    }
     if (targetPath === '') {
       targetPath = '/';
     }
@@ -72,29 +100,184 @@ export default function App() {
     if (window.location.pathname !== targetPath) {
       window.history.pushState(null, '', targetPath);
     }
-  }, [lang, currentRoute]);
 
-  // Active state variables for interactive elements
-  const [selectedBlog, setSelectedBlog] = useState<BlogPost | null>(null);
-  const [showVideoModal, setShowVideoModal] = useState(false);
-  const [showDemoModal, setShowDemoModal] = useState(false);
-  const [demoEmail, setDemoEmail] = useState('');
-  const [demoCompanyName, setDemoCompanyName] = useState('');
-  const [demoSuccess, setDemoSuccess] = useState(false);
-  
-  // Interactive Flowchart Active Node Trigger
-  const [activeWorkflowNode, setActiveWorkflowNode] = useState<string>('customer');
+    // Dynamic Title & Description for SEO programmatically injected to head
+    const metadb: Record<string, { title: Record<string, string>; d: Record<string, string> }> = {
+      home: {
+        title: {
+          en: 'modaui AI Commerce OS | Automated Global Retail Solutions',
+          it: 'modaui AI Commerce OS | Registratori di Cassa e Magazzino',
+          zh: '摩达数智 (modaui) | 欧洲收银 POS、智能 ERP 与 24h 自动获客系统'
+        },
+        d: {
+          en: 'Discover the next-generation operating system built to reduce physical merchant transaction fees to 0.45%, sync active stock refilling, and grow customer CRM securely.',
+          it: 'Rivoluziona il tuo business locale con i pagamenti QR all\'0,45% e scontrini digitali del network modaui.',
+          zh: '开启新一代华人商业数字时代：打通桌边扫码收银、跨境智能供销仓储、7*24h 全流量获客，直连欧洲税务局合规申报电子发票。'
+        }
+      },
+      solutions: {
+        title: {
+          en: 'Commerce Solutions | Retail & Fine-Dining | modaui',
+          it: 'Soluzioni per Settore RETAIL e Ristoranti | modaui',
+          zh: '餐馆与百货行业数字化技术方案 | 摩达数智 (modaui)'
+        },
+        d: {
+          en: 'Deploy tailored Michelin-star blueprints or manufacturing warehouse logs. Complete client onboarding portfolios, zero setup fees.',
+          it: 'Sfoglia i moduli software per boutique e ristorazione del catalogo modaui.',
+          zh: '即刻采用餐馆分账、百货扫码、大宗物流出货等专属数字化软件蓝图，极速落地。'
+        }
+      },
+      compare: {
+        title: {
+          en: 'modaui vs Legacy Commerce Software | Direct Profit Analysis',
+          it: 'Confronto modaui contro Strumenti Tradizionali',
+          zh: '集成底层账本与传统散装拼接软件利润率对比 | 摩达数智 (modaui)'
+        },
+        d: {
+          en: 'Discover why a single-ledger unified architecture outperforms scattered combinations of Shopify, Stripe, and Odoo ERP while keeping you tax-compliant.',
+          it: 'Scopri perché il nostro registro unico supera nettamente i pacchetti obsoleti riducendo i costi.',
+          zh: '多维度剖析为什么单一可信账本在降低通道损耗、税控漏洞和人员成本方面远超散装拼接系统。'
+        }
+      },
+      blog: {
+        title: {
+          en: 'Commerce Academy Blog & SEO Pressroom | modaui',
+          it: 'Blog di Crescita Commerciale | modaui',
+          zh: '华商流量增长、私域营销与欧洲财税博客 | 摩达数智 (modaui)'
+        },
+        d: {
+          en: 'Learn how to optimize search positions, deploy local-language automated blog crawlers, and read audits of real SMEs reaching 400% ROI.',
+          it: 'Articoli e approfondimenti fiscali redatti dai partner di sviluppo modaui.',
+          zh: '深入涉猎长尾关键词营销策略、ChatGPT/Gemini 程序化获客手段以及欧洲合规财税解读。'
+        }
+      },
+      docs: {
+        title: {
+          en: 'Developer Integration Guides & API docs | modaui',
+          it: 'Manuale e API per Sviluppatori Integration Guides | modaui',
+          zh: '开放商用 API 接口文档与多国架构配置 | 摩达数智 (modaui)'
+        },
+        d: {
+          en: 'Query real-time sdi invoice webhooks, POS socket triggers, tax printer schemas, and programmatic database initializations.',
+          it: 'Esplora le chiamate API, i webhook di scontrino digitale e i tracciati XML dell\'Agenzia delle Entrate.',
+          zh: '阅览直连税控打印、自动发票申报 webhook、订单同步套接字以及多合一支付网关接口。'
+        }
+      },
+      wiki: {
+        title: {
+          en: 'AI Merchant Compliance Wiki & Legal Encyclopedias | modaui',
+          it: 'Enciclopedia Fiscale dei Termini Commerciali | modaui',
+          zh: '商企合规核算与税制百科词条大观 | 摩达数智 (modaui)'
+        },
+        d: {
+          en: 'Demystifying European value added tax laws (VAT), digital scontrini telematici, and GDPR privacy specifications.',
+          it: 'I termini complessi dell\'e-commerce e della fiscalità spiegati in parole semplici.',
+          zh: '深度解析 IVA 申报、GDPR 首要隐私法则以及各物理行业合规开票的法规细则。'
+        }
+      },
+      prompts: {
+        title: {
+          en: '24h Client-Acquisition Prompt depots | modaui',
+          it: 'Libreria di Prompt per Automazione Vendite | modaui',
+          zh: '高转化 7*24h 自动获客与私域推送 AI 提示词库 | 摩达数智 (modaui)'
+        },
+        d: {
+          en: 'Unlock conversion optimization copywriting templates to feeds into modern language assistants.',
+          it: 'I migliori prompt per configurare chatbot operativi ed assistenti di vendita.',
+          zh: '获取适配智能销售机器人的营销提示词与全渠道私域客户跟进沟通话术模板。'
+        }
+      },
+      cases: {
+        title: {
+          en: 'Audited Small-Business ROI Case Whitepapers | modaui',
+          it: 'Storie di Successo e Casi di Studio Certificati',
+          zh: '全欧连锁铺面与外贸大工厂 ROI 收益实证白皮书 | 摩达数智 (modaui)'
+        },
+        d: {
+          en: 'Read reports of real Roman Bistros cutting swipe cost by 75% and industrial textile units reducing shipping delays.',
+          it: 'Le testimonianze autentiche dei proprietari che hanno accelerato i profitti con modaui.',
+          zh: '阅读罗马美食酒家、普拉托服装制造大工厂等真实商户引入摩达系统后的实测利润变化。'
+        }
+      },
+      drive: {
+        title: {
+          en: 'Google Drive CRM Backup & Console | modaui',
+          it: 'Console Google Drive e Archivio Sicuro',
+          zh: '谷歌网盘 (Google Drive) 安全沙箱备份配置控制台 | 摩达数智 (modaui)'
+        },
+        d: {
+          en: 'Connect and sync your local CRM database leads directly to secure cloud folders within one single screen.',
+          it: 'Sincronizza e scansiona il database per conservare le copie dei log di vendita.',
+          zh: '在单页面内打通谷歌官方 OAuth 开通授权，将本站所收集的 CRM 商业线索一键秒级同步备份。'
+        }
+      },
+      factory: {
+        title: {
+          en: 'XML Sitemap & robots.txt auto-builder Console | modaui',
+          it: 'Gestore Sitemap.xml e robots.txt per Crawler',
+          zh: 'Sitemap.xml 搜索引擎地图生成与收录抓取诊断控制台 | 摩达数智 (modaui)'
+        },
+        d: {
+          en: 'Verify the active crawling schema reflecting 145,280 pages generated for search spiders and crawlers.',
+          it: 'Visualizza e rigenera i percorsi fisici per Google Bot in tempo reale.',
+          zh: '动态预览并诊断全站 14.5 万程序化独立页面节点的抓取状况、RSS 订阅源以及物理 Git 快照状态。'
+        }
+      }
+    };
 
-  // AI Sales Agent Chat window states
-  const [aiChatOpen, setAiChatOpen] = useState(false);
-  const [aiChatMessages, setAiChatMessages] = useState<Array<{ sender: 'agent' | 'user'; text: string }>>([
-    { sender: 'agent', text: 'Hi! I am the modaui AI Sales Assistant. How can I help grow your business today?' }
-  ]);
-  const [leadMailSubmitted, setLeadMailSubmitted] = useState(false);
-  const [potentialEmail, setPotentialEmail] = useState('');
+    let titleText = '';
+    let descText = '';
 
-  // Pricing Interval Toggle
-  const [pricePeriod, setPricePeriod] = useState<'monthly' | 'yearly'>('monthly');
+    const activeLang: string = lang === 'zh' ? 'zh' : lang === 'it' ? 'it' : 'en';
+
+    if (selectedBlog) {
+      titleText = `${selectedBlog.title[lang as any] || selectedBlog.title.en} | modaui Blog`;
+      descText = selectedBlog.summary[lang as any] || selectedBlog.summary.en;
+    } else {
+      const dbEntry = metadb[currentRoute] || metadb.home;
+      titleText = dbEntry.title[activeLang] || dbEntry.title.en;
+      descText = dbEntry.d[activeLang] || dbEntry.d.en;
+    }
+
+    // Write title
+    document.title = titleText;
+
+    // Write description
+    let metaDesc = document.querySelector('meta[name="description"]');
+    if (!metaDesc) {
+      metaDesc = document.createElement('meta');
+      metaDesc.setAttribute('name', 'description');
+      document.head.appendChild(metaDesc);
+    }
+    metaDesc.setAttribute('content', descText);
+
+    // Update canonical link
+    let canonical = document.querySelector('link[rel="canonical"]');
+    if (!canonical) {
+      canonical = document.createElement('link');
+      canonical.setAttribute('rel', 'canonical');
+      document.head.appendChild(canonical);
+    }
+    canonical.setAttribute('href', `https://modaui.com${targetPath}`);
+
+    // Update OpenGraph details
+    let ogTitle = document.querySelector('meta[property="og:title"]');
+    if (!ogTitle) {
+      ogTitle = document.createElement('meta');
+      ogTitle.setAttribute('property', 'og:title');
+      document.head.appendChild(ogTitle);
+    }
+    ogTitle.setAttribute('content', titleText);
+
+    let ogDesc = document.querySelector('meta[property="og:description"]');
+    if (!ogDesc) {
+      ogDesc = document.createElement('meta');
+      ogDesc.setAttribute('property', 'og:description');
+      document.head.appendChild(ogDesc);
+    }
+    ogDesc.setAttribute('content', descText);
+
+  }, [lang, currentRoute, selectedBlog]);
 
   // Translations Map
   const navT = {
@@ -109,6 +292,7 @@ export default function App() {
       wiki: 'Wiki',
       prompts: 'AI Prompts',
       cases: 'ROI Cases',
+      drive: 'Cloud Sync ✦',
       ctaText: 'Start Free',
       heroTitle: 'modaui AI Commerce OS',
       heroSub: 'The AI Operating System for Modern Commerce.',
@@ -141,6 +325,7 @@ export default function App() {
       wiki: 'Wiki',
       prompts: 'Prompt AI',
       cases: 'Casi Studio',
+      drive: 'Sincr. Cloud ✦',
       ctaText: 'Inizia Gratis',
       heroTitle: 'modaui AI Commerce OS',
       heroSub: 'Il Sistema Operativo IA per il Commercio Moderno.',
@@ -173,6 +358,7 @@ export default function App() {
       wiki: '商业百科',
       prompts: '提示词库',
       cases: '成功案例',
+      drive: '云盘同步 ✦',
       ctaText: '开始免费体验',
       heroTitle: 'modaui华商生态平台',
       heroSub: 'AI 智能驱动：让欧洲华人百货、餐饮、进出口贸易迈向数智化。',
@@ -363,9 +549,18 @@ export default function App() {
     setAiChatMessages(prev => [...prev, userMsg, { sender: 'agent', text: replyText }]);
   };
 
-  const submitLeadEmail = (e: React.FormEvent) => {
+  const submitLeadEmail = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!potentialEmail.includes('@')) return;
+    try {
+      await fetch('/api/seo/crm/lead', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: potentialEmail, source: 'ai_sales_chatbot' })
+      });
+    } catch (err) {
+      console.error('CRM log failed:', err);
+    }
     setLeadMailSubmitted(true);
     setAiChatMessages(prev => [
       ...prev,
@@ -374,8 +569,17 @@ export default function App() {
     ]);
   };
 
-  const handleDemoSubmit = (e: React.FormEvent) => {
+  const handleDemoSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    try {
+      await fetch('/api/seo/crm/lead', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: demoEmail, companyName: demoCompanyName, source: 'book_demo_modal' })
+      });
+    } catch (err) {
+      console.error('Demo CRM sync error:', err);
+    }
     setDemoSuccess(true);
     setTimeout(() => {
       setDemoSuccess(false);
@@ -464,6 +668,14 @@ export default function App() {
               id="nav-link-cases"
             >
               {navT.cases}
+            </button>
+            <button
+              onClick={() => { setCurrentRoute('drive'); setSelectedBlog(null); }}
+              className={`pb-1 text-emerald-400 font-mono font-medium pointer-events-auto hover:text-white transition-colors flex items-center gap-1.5 ${currentRoute === 'drive' ? 'text-cyan-400 border-b-2 border-cyan-500' : ''}`}
+              id="nav-link-drive"
+            >
+              <Cloud className="w-3.5 h-3.5" />
+              {navT.drive}
             </button>
             <button
               onClick={() => { setCurrentRoute('factory'); setSelectedBlog(null); }}
@@ -565,6 +777,13 @@ export default function App() {
               className="block w-full text-left py-2 px-3 hover:bg-slate-900 rounded"
             >
               {navT.cases}
+            </button>
+            <button
+              onClick={() => { setCurrentRoute('drive'); setMobileMenuOpen(false); }}
+              className="block w-full text-left py-2 px-3 hover:bg-slate-900 rounded text-emerald-400 font-semibold flex items-center gap-1.5"
+            >
+              <Cloud className="w-4 h-4" />
+              {navT.drive}
             </button>
             <button
               onClick={() => { setCurrentRoute('factory'); setMobileMenuOpen(false); }}
@@ -1238,54 +1457,193 @@ Response 200 OK:
           <AiCaseStudies lang={lang} />
         )}
 
+        {/* ROUTE 10: GOOGLE CLOUD STORAGE WORKSPACE */}
+        {currentRoute === 'drive' && (
+          <DriveWorkspace lang={lang} />
+        )}
+
       </main>
 
       {/* PERSISTENT CORE FOOTER */}
       <footer className="bg-[#05060d] border-t border-slate-900 py-12 px-4 leading-normal">
-        <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8">
-          <div>
-            <span className="text-base font-display font-medium tracking-tight text-white flex items-center gap-1.5">
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-indigo-400">modaui</span>
-              <span className="text-[9px] font-mono text-cyan-400 bg-cyan-950/40 border border-cyan-800/20 px-1 py-0.5 rounded">OS</span>
-            </span>
-            <p className="mt-3 text-slate-500 text-[11px] leading-relaxed">
-              {navT.footerCompanyDesc}
-            </p>
-          </div>
+        {(() => {
+          const lf = {
+            en: {
+              directory: 'Company Directory',
+              about: 'About modaui Group',
+              careers: 'Careers (Openings)',
+              press: 'Milan Press Room',
+              partners: 'Global Partner Network',
+              offices: 'Operating Offices (Milano)',
+              connections: 'Platform Connections',
+              driveSync: 'Google Drive sync ✦',
+              stripe: 'Stripe gateway terminal',
+              whatsapp: 'WhatsApp Business link',
+              telegram: 'Telegram Dev Channel',
+              map: 'Locate via Google Maps',
+              legal: 'Brand Trust & Legal',
+              address: 'Via Montenapoleone 8, Milan, Italy'
+            },
+            it: {
+              directory: 'Directory Aziendale',
+              about: 'Chi Siamo - modaui',
+              careers: 'Lavora con Noi',
+              press: 'Ufficio Stampa Milano',
+              partners: 'Programma Affiliati',
+              offices: 'Uffici Operativi (Milano)',
+              connections: 'Piattaforme esterne',
+              driveSync: 'Esploratore Google Drive ✦',
+              stripe: 'Pagamenti via Stripe',
+              whatsapp: 'Canale diretto WhatsApp',
+              telegram: 'Canale Sviluppo Telegram',
+              map: 'Sede su Google Maps',
+              legal: 'Affidabilità e Fiscale',
+              address: 'Via Montenapoleone 8, Milano, Italia'
+            },
+            zh: {
+              directory: '公司目录与服务',
+              about: '关于 摩达数智 (modaui)',
+              careers: '招纳贤士 / 全球招聘',
+              press: '米兰总部新闻媒介中心',
+              partners: '全球城市加盟伙伴推广',
+              offices: '海外办事处 (米兰 / 罗马 / 温州)',
+              connections: '外部数字平台连接',
+              driveSync: '谷歌网盘 (Google Drive Sync) ✦',
+              stripe: 'Stripe 统一结算通道',
+              whatsapp: 'WhatsApp 企业自动推送',
+              telegram: 'Telegram 实时客服通联',
+              map: '谷歌地图总部定位 (G-Maps)',
+              legal: '品牌信任与欧规合规',
+              address: '意大利米兰蒙特拿破仑大街 8 号'
+            }
+          }[lang === 'zh' ? 'zh' : lang === 'it' ? 'it' : 'en'] || {
+            directory: 'Company Directory',
+            about: 'About modaui Group',
+            careers: 'Careers (Openings)',
+            press: 'Milan Press Room',
+            partners: 'Global Partner Network',
+            offices: 'Operating Offices (Milano)',
+            connections: 'Platform Connections',
+            driveSync: 'Google Drive sync ✦',
+            stripe: 'Stripe gateway terminal',
+            whatsapp: 'WhatsApp Business link',
+            telegram: 'Telegram Dev Channel',
+            map: 'Locate via Google Maps',
+            legal: 'Brand Trust & Legal',
+            address: 'Via Montenapoleone 8, Milan, Italy'
+          };
 
-          <div>
-            <h4 className="text-xs font-mono font-bold uppercase text-slate-400 mb-3 tracking-wider">Commerce Centers</h4>
-            <div className="space-y-2 text-[11px] font-sans">
-              <button onClick={() => { setCurrentRoute('solutions'); setSelectedBlog(null); }} className="block text-slate-500 hover:text-white pointer-events-auto text-left">Solutions Directory</button>
-              <button onClick={() => { setCurrentRoute('compare'); setSelectedBlog(null); }} className="block text-slate-500 hover:text-white pointer-events-auto text-left">Compare SaaS Stack</button>
-              <button onClick={() => { setCurrentRoute('blog'); setSelectedBlog(null); }} className="block text-slate-500 hover:text-white pointer-events-auto text-left">Commerce Academy</button>
-            </div>
-          </div>
+          return (
+            <div className="max-w-6xl mx-auto space-y-12">
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-8">
+                
+                {/* COL 1: Brand and Social hubs */}
+                <div className="space-y-4">
+                  <span className="text-base font-display font-medium tracking-tight text-white flex items-center gap-1.5">
+                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-indigo-400">modaui</span>
+                    <span className="text-[9px] font-mono text-cyan-400 bg-cyan-950/40 border border-cyan-800/20 px-1.5 py-0.5 rounded">OS</span>
+                  </span>
+                  <p className="text-slate-500 text-[11px] leading-relaxed text-left">
+                    {navT.footerCompanyDesc}
+                  </p>
+                  <p className="text-[10px] text-slate-400 font-mono italic text-left">
+                    📍 {lf.address}
+                  </p>
+                  
+                  {/* Connect buttons row */}
+                  <div className="flex gap-2.5 pt-2">
+                    <a 
+                      href="https://wa.me/39333000000" 
+                      target="_blank" 
+                      rel="noopener noreferrer" 
+                      title="WhatsApp Business API"
+                      className="p-1 px-2.5 rounded bg-emerald-950/20 hover:bg-emerald-950/45 border border-emerald-900/30 text-emerald-400 hover:text-white transition-all text-[10px] font-mono flex items-center gap-1"
+                    >
+                      WhatsApp
+                    </a>
+                    <a 
+                      href="https://t.me/modaui" 
+                      target="_blank" 
+                      rel="noopener noreferrer" 
+                      title="Telegram Developers Global Group"
+                      className="p-1 px-2.5 rounded bg-blue-950/20 hover:bg-blue-950/45 border border-blue-900/30 text-blue-400 hover:text-white transition-all text-[10px] font-mono flex items-center gap-1"
+                    >
+                      Telegram
+                    </a>
+                  </div>
+                </div>
 
-          <div>
-            <h4 className="text-xs font-mono font-bold uppercase text-slate-400 mb-3 tracking-wider font-semibold">Technical Feeds</h4>
-            <div className="space-y-2 text-[11px] font-sans">
-              <button onClick={() => { setCurrentRoute('factory'); }} className="block text-slate-500 hover:text-white pointer-events-auto text-left">Sitemap.xml Feed</button>
-              <button onClick={() => { setCurrentRoute('factory'); }} className="block text-slate-500 hover:text-white pointer-events-auto text-left">Robots.txt Crawlers</button>
-              <button onClick={() => { setCurrentRoute('docs'); setSelectedBlog(null); }} className="block text-slate-500 hover:text-white pointer-events-auto text-left">Developer JSON schemas</button>
-            </div>
-          </div>
+                {/* COL 2: Company Directory (公司目录) */}
+                <div className="text-left">
+                  <h4 className="text-xs font-mono font-bold uppercase text-slate-400 mb-3 tracking-wider">{lf.directory}</h4>
+                  <div className="space-y-2 text-[11px] font-sans flex flex-col items-start">
+                    <button onClick={() => setDossierTopic('about')} className="text-slate-500 hover:text-white text-left pointer-events-auto cursor-pointer">{lf.about}</button>
+                    <button onClick={() => setDossierTopic('careers')} className="text-slate-500 hover:text-white text-left pointer-events-auto cursor-pointer">{lf.careers}</button>
+                    <button onClick={() => setDossierTopic('press')} className="text-slate-500 hover:text-white text-left pointer-events-auto cursor-pointer">{lf.press}</button>
+                    <button onClick={() => setDossierTopic('partners')} className="text-slate-500 hover:text-white text-left pointer-events-auto cursor-pointer">{lf.partners}</button>
+                    <button onClick={() => setDossierTopic('offices')} className="text-slate-500 hover:text-white text-left pointer-events-auto cursor-pointer">{lf.offices}</button>
+                  </div>
+                </div>
 
-          <div>
-            <h4 className="text-xs font-mono font-bold uppercase text-slate-400 mb-3 tracking-wider">Brand Trust</h4>
-            <div className="space-y-2 text-[11px] font-sans">
-              <span className="block text-slate-500">{navT.privacyTerm}</span>
-              <span className="block text-slate-500">{navT.termsService}</span>
-              <div className="pt-2 text-slate-600 font-mono text-[9px]">
-                Target endpoint: app.modaui.com • Secure SSL Active
+                {/* COL 3: Platform connections & OAuth Hub (平台与外部连接) */}
+                <div className="text-left">
+                  <h4 className="text-xs font-mono font-bold uppercase text-slate-400 mb-3 tracking-wider">{lf.connections}</h4>
+                  <div className="space-y-2 text-[11px] font-sans flex flex-col items-start">
+                    <button 
+                      onClick={() => { setCurrentRoute('drive'); setSelectedBlog(null); }} 
+                      className="text-emerald-400 hover:text-emerald-300 font-semibold text-left pointer-events-auto cursor-pointer"
+                    >
+                      ✦ {lf.driveSync}
+                    </button>
+                    <a href="https://stripe.com" target="_blank" rel="noopener noreferrer" className="text-slate-500 hover:text-white text-left font-mono text-[10px] flex items-center gap-1 py-0.5">
+                      💳 {lf.stripe}
+                    </a>
+                    <a href="https://maps.google.com/?q=Via+Montenapoleone+8,+Milano" target="_blank" rel="noopener noreferrer" className="text-slate-500 hover:text-white text-left font-mono text-[10px] flex items-center gap-1 py-0.5">
+                      🗺️ {lf.map}
+                    </a>
+                    <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="text-slate-500 hover:text-white text-left font-mono text-[10px] flex items-center gap-1 py-0.5">
+                      🐱 GitHub Source Repository
+                    </a>
+                    <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="text-slate-500 hover:text-white text-left font-mono text-[10px] flex items-center gap-1 py-0.5">
+                      🔗 LinkedIn Enterprise Feed
+                    </a>
+                  </div>
+                </div>
+
+                {/* COL 4: Commerce Centers */}
+                <div className="text-left">
+                  <h4 className="text-xs font-mono font-bold uppercase text-slate-400 mb-3 tracking-wider">Commerce Centers</h4>
+                  <div className="space-y-2 text-[11px] font-sans flex flex-col items-start col-span-1">
+                    <button onClick={() => { setCurrentRoute('solutions'); setSelectedBlog(null); }} className="block text-slate-500 hover:text-white pointer-events-auto text-left">Solutions Directory</button>
+                    <button onClick={() => { setCurrentRoute('compare'); setSelectedBlog(null); }} className="block text-slate-500 hover:text-white pointer-events-auto text-left">Compare SaaS Stack</button>
+                    <button onClick={() => { setCurrentRoute('blog'); setSelectedBlog(null); }} className="block text-slate-500 hover:text-white pointer-events-auto text-left">Commerce Academy</button>
+                    <button onClick={() => { setCurrentRoute('factory'); }} className="block text-slate-500 hover:text-white pointer-events-auto text-left">Sitemap.xml Feed</button>
+                    <button onClick={() => { setCurrentRoute('factory'); }} className="block text-slate-500 hover:text-white pointer-events-auto text-left">Robots.txt Crawlers</button>
+                  </div>
+                </div>
+
+                {/* COL 5: Legal & trust compliance (品牌信任) */}
+                <div className="text-left">
+                  <h4 className="text-xs font-mono font-bold uppercase text-slate-400 mb-3 tracking-wider">{lf.legal}</h4>
+                  <div className="space-y-2 text-[11px] font-sans text-left">
+                    <button onClick={() => setDossierTopic('privacy')} className="block text-slate-500 hover:text-white pointer-events-auto text-left py-0.5">{navT.privacyTerm}</button>
+                    <button onClick={() => setDossierTopic('terms')} className="block text-slate-500 hover:text-white pointer-events-auto text-left py-0.5">{navT.termsService}</button>
+                    <div className="pt-2 text-slate-600 font-mono text-[9px] space-y-1">
+                      <span className="block">Target node: <b>app.modaui.com</b></span>
+                      <span className="block text-[8px] text-emerald-500">🟢 Cloud Secure SSL Layer Active</span>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+
+              <div className="pt-8 border-t border-slate-900/60 flex flex-col sm:flex-row justify-between items-center text-[10px] font-mono text-slate-500 gap-4">
+                <span>© 2026 modaui.com Technologies Inc. Conforming with European fiscal digital accounting protocols.</span>
+                <span className="text-[9px] text-slate-600">Enterprise VAT: IT3908210398 • Shared Drive clusters • SSL 256bit Encrypted</span>
               </div>
             </div>
-          </div>
-        </div>
-
-        <div className="max-w-6xl mx-auto pt-8 mt-8 border-t border-slate-900/60 text-center text-[10px] font-mono text-slate-500">
-          © 2026 modaui.com Technologies Inc. Conforming with European fiscal digital accounting protocols.
-        </div>
+          );
+        })()}
       </footer>
 
       {/* PHASE 8: FLOATING INTELLIGENT "AI SALES AGENT" OR CHATBOT (Bottom Right Corner) */}
@@ -1463,6 +1821,220 @@ Response 200 OK:
                 Confirm Setup Demo Session
               </button>
             </form>
+          </div>
+        </div>
+      )}
+
+      {/* CORE DOSSIER & LEGAL POLICY HUB OVERLAY (PRODUCTION-GRADE) */}
+      {dossierTopic !== null && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/85 backdrop-blur-md pointer-events-auto overflow-y-auto">
+          <div className="bg-[#070914] border border-slate-900 rounded-3xl w-full max-w-2xl overflow-hidden glow-card my-8">
+            {/* Header */}
+            <div className="px-6 py-4 border-b border-slate-900 flex justify-between items-center bg-[#05060d]">
+              <div className="flex items-center gap-2">
+                <span className="w-2.5 h-2.5 rounded-full bg-cyan-400 animate-pulse"></span>
+                <span className="text-xs font-mono font-bold text-slate-300 uppercase tracking-wider">
+                  {lang === 'zh' ? 'modaui 华人数字商业中枢 • 官方备案' : lang === 'it' ? 'Dossier Ufficiale modaui • Milano' : 'Official modaui Dossier • Group Registry'}
+                </span>
+              </div>
+              <button onClick={() => setDossierTopic(null)} className="text-slate-400 hover:text-white p-1 hover:bg-slate-900 rounded-lg transition-colors">
+                <X className="w-5 h-5" />
+              </button>
+            </div>
+
+            {/* Content Drawer */}
+            <div className="p-8 space-y-6 overflow-y-auto max-h-[500px] text-left">
+              
+              {/* TOPIC: ABOUT */}
+              {dossierTopic === 'about' && (
+                <div className="space-y-4">
+                  <h3 className="text-xl font-bold text-white font-display">
+                    {lang === 'zh' ? '关于 摩达数智 (modaui Group)' : lang === 'it' ? 'Chi Siamo - modaui Group' : 'About modaui Group'}
+                  </h3>
+                  <div className="text-xs text-slate-400 leading-relaxed space-y-3.5 font-normal">
+                    <p>
+                      {lang === 'zh' 
+                        ? '摩达数智 (modaui) 是专为欧洲及全球华人实体经济研发的下一代智能商业操作系统（AI Commerce OS）。我们通过革命性的程序化架构，将数字收银（POS）、智能库存（ERP）、精准获客（CRM）、多语境 AI 外呼客服以及直连本地税务局（如意大利 Agenzia delle Entrate）的电子发票合规接口融为一体。'
+                        : 'modaui is the unified AI Operating System built specifically to handle modern localized commerce workflow. We bypass legacy physical layers by orchestrating compliant point-of-sale systems, predicting active inventory refills, and coordinating multilingual outreach campaigns, fully compliant with national frameworks.'}
+                    </p>
+                    <p>
+                      {lang === 'zh'
+                        ? '我们的使命是捍卫华商实体的每一分辛勤所得。通过摒弃市面上常见的 1.5%~3% 高额扣点收单，modaui 提供低至 0.45% 的刷卡和扫码通道，并且保障所有的客户数据归属于商户自身，在安全的本地和谷歌网盘内进行离线同步。'
+                        : 'Our unified system brings down physical transaction swipe costs heavily from 1.8% to 0.45% through robust cloud ledger technology, while ensuring CRM client logs are securely backed up directly in your own sandbox with active storage permissions.'}
+                    </p>
+                  </div>
+                </div>
+              )}
+
+              {/* TOPIC: CAREERS */}
+              {dossierTopic === 'careers' && (
+                <div className="space-y-4">
+                  <h3 className="text-xl font-bold text-white font-display">
+                    {lang === 'zh' ? '招纳贤士 / 全球招聘 (Careers)' : lang === 'it' ? 'Lavora con Noi - Opportunità' : 'Careers at modaui'}
+                  </h3>
+                  <div className="text-xs text-slate-400 leading-relaxed space-y-4 font-normal">
+                    <p>
+                      {lang === 'zh'
+                        ? '摩达数智致力于用科技赋能全球商户。我们在米兰、罗马以及中国温州设有研发与支持中心。以下职位长期对有意向的优秀海内外华人和本地背景人才开放：'
+                        : 'Join the architecture team building reliable, low-latency micro-payment registries and high-throughput content crawling grids.'}
+                    </p>
+                    
+                    <div className="space-y-2">
+                      <div className="p-3.5 bg-slate-950/60 rounded-xl border border-slate-900 hover:border-slate-800 transition-all">
+                        <div className="flex justify-between items-center mb-1">
+                          <span className="font-semibold text-white font-mono">1. Senior Full-Stack Engineer (Italy Taxes)</span>
+                          <span className="text-[9px] font-mono bg-cyan-950 text-cyan-400 px-2 py-0.5 rounded border border-cyan-800/30">Milan / Hybrid</span>
+                        </div>
+                        <p className="text-[11px] text-slate-500">Expertise in Node.js, Express, and integration with Sdi Invoice protocols / XML. Fluent in Italian & Chinese preferred.</p>
+                      </div>
+
+                      <div className="p-3.5 bg-slate-950/60 rounded-xl border border-slate-900 hover:border-slate-800 transition-all">
+                        <div className="flex justify-between items-center mb-1">
+                          <span className="font-semibold text-white font-mono">2. AI Growth Campaign Specialist</span>
+                          <span className="text-[9px] font-mono bg-purple-950 text-purple-400 px-2 py-0.5 rounded border border-purple-800/20">Rome / Remote</span>
+                        </div>
+                        <p className="text-[11px] text-slate-500">Orchestrating search intents, dynamic programmatic landing generators, and LLM keyword vectors.</p>
+                      </div>
+                    </div>
+                    <p className="text-[11px] text-slate-500 font-mono">
+                      ✉ Apply directly with your GitHub and career resume: <span className="text-cyan-400 font-bold">careers@modaui.com</span>
+                    </p>
+                  </div>
+                </div>
+              )}
+
+              {/* TOPIC: PRESS */}
+              {dossierTopic === 'press' && (
+                <div className="space-y-4">
+                  <h3 className="text-xl font-bold text-white font-display">
+                    {lang === 'zh' ? '米兰总部新闻媒介中心' : lang === 'it' ? 'Ufficio Stampa Milano' : 'Milan Press Inquiry Room'}
+                  </h3>
+                  <div className="text-xs text-slate-400 leading-relaxed space-y-3 font-normal">
+                    <p>
+                      {lang === 'zh'
+                        ? '欢迎来自欧洲主流财经媒体、华人社会报导和全球科技自媒体的联络。我们提供完整的 modaui 品牌矢量素材包、各行业华商数字化转型 ROI 报告白皮书、以及有关欧洲电子收税新规（Scontrino Telematico）的深度解读。'
+                        : 'Official media press packs can be gathered instantly on demand. We deliver real-time metrics on offline business automation trends and multi-lingual consumer retention stats.'}
+                    </p>
+                    <div className="p-4 bg-slate-950 border border-slate-900 rounded-xl space-y-1.5 font-mono text-[11px]">
+                      <div>👥 Press Contact: <b>Media Relations Italy</b></div>
+                      <div>📧 Email: <span className="text-cyan-400">press@modaui.com</span></div>
+                      <div>📍 Sede: <b>Via Montenapoleone 8, 20121 Milano (MI)</b></div>
+                    </div>
+                  </div>
+                </div>
+              )}
+
+              {/* TOPIC: PARTNERS */}
+              {dossierTopic === 'partners' && (
+                <div className="space-y-4">
+                  <h3 className="text-xl font-bold text-white font-display">
+                    {lang === 'zh' ? '全球城市销售与技术加盟伙伴' : lang === 'it' ? 'Programma Affiliati & POS Partner' : 'Global Authorized Partner Network'}
+                  </h3>
+                  <div className="text-xs text-slate-400 leading-relaxed space-y-3.5 font-normal">
+                    <p>
+                      {lang === 'zh'
+                        ? '摩达数智销售渠道实行城市独家合伙人政策。无论是意大利、行联邦制区域（如德奥）、还是西葡，各地资深华商品牌渠道和 POS 硬件分销商皆可申请加入 modaui 高额分佣与技术辅导联盟。'
+                        : 'Expand your localized hardware distributor business with our digital terminal license. We unlock deep residual cash flow commissions on card volume and subscription accounts.'}
+                    </p>
+                    <p>
+                      {lang === 'zh'
+                        ? '合伙人将获得首年 100% 的安装运维授权，并享受长期租用分成以及永久免 POS 刷卡机中间抽扣政策。'
+                        : 'Qualified regional agencies receive technical integration guides, customized system setups, and premium localization collateral.'}
+                    </p>
+                    <p className="text-cyan-400 font-mono text-[11px] font-bold">
+                      ✦ Contact global relations desk: partnership@modaui.com
+                    </p>
+                  </div>
+                </div>
+              )}
+
+              {/* TOPIC: OFFICES */}
+              {dossierTopic === 'offices' && (
+                <div className="space-y-4">
+                  <h3 className="text-xl font-bold text-white font-display">
+                    {lang === 'zh' ? '跨国运营办公中心 (Offices)' : lang === 'it' ? 'Uffici Operativi e Sedi' : 'Operating Offices & Hubs'}
+                  </h3>
+                  <div className="text-xs text-slate-400 leading-relaxed space-y-3.5 font-normal">
+                    <p>
+                      {lang === 'zh'
+                        ? '我们的办公中心跨越欧洲潮流之都与华人发源腹地，支撑着24小时全天候不停机服务网络（SSL 256位加密链路实时通达）：'
+                        : 'Our corporate hubs operate seamlessly across cross-border locations to assist your local tax compliance and terminal requirements:'}
+                    </p>
+                    <ul className="space-y-2.5 font-mono text-[11px]">
+                      <li className="p-3 bg-slate-950 border border-slate-900 rounded-xl">
+                        <span className="block text-white font-bold">🇮🇹 Milan HQ (米兰总部)</span>
+                        <span className="block text-slate-500 mt-1">Address: Via Montenapoleone 8, 20121 Milano, Italy</span>
+                      </li>
+                      <li className="p-3 bg-slate-950 border border-slate-900 rounded-xl">
+                        <span className="block text-white font-bold">🇨🇳 China Wenzhou Node (中国温州支持中心)</span>
+                        <span className="block text-slate-500 mt-1">办公地址: 浙江省温州市鹿城区华侨数智科技大厦 308 室</span>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              )}
+
+              {/* TOPIC: PRIVACY */}
+              {dossierTopic === 'privacy' && (
+                <div className="space-y-4 text-xs">
+                  <h3 className="text-xl font-bold text-white font-display">
+                    {lang === 'zh' ? 'GDPR 跨境主权隐私安全性守则' : lang === 'it' ? 'Dichiarazione sulla Riservatezza GDPR' : 'GDPR Privacy & Trust Policies'}
+                  </h3>
+                  <div className="text-slate-400 leading-relaxed space-y-3.5 font-normal">
+                    <p className="font-semibold text-white">
+                      Effective Date: June 21, 2026. Fully aligned with Regulation (EU) 2016/679 (General Data Protection Regulation - GDPR).
+                    </p>
+                    <p>
+                      <b>1. Data Ownership:</b> At modaui Group, we explicitly declare that your company data, menu configurations, and customer CRM lists are strictly your own, sovereign assets. We do not resell, scrape, or leak registration leads to third parties.
+                    </p>
+                    <p>
+                      <b>2. Secure Local Encryptions:</b> All client lead data uploaded via our booking form is safely encrypted with SSL 256-bit protocols, stored in regional filesystem databases, and is exportable on demand only to your authorized Google Drive workspace using secure OAuth tokens.
+                    </p>
+                    <p>
+                      <b>3. Your GDPR Rights:</b> Under GDPR Articles 15 (Right of Access), 16 (Right to Rectification), and 17 (Right to Erasure / Right to be Forgotten), you have complete control over any email address stored. You may request a complete export or immediate wipe of your captured lead record anytime by messaging <span className="text-cyan-400 font-mono">gdpr@modaui.com</span>. We will execute the wipe within 1 hour.
+                    </p>
+                  </div>
+                </div>
+              )}
+
+              {/* TOPIC: TERMS */}
+              {dossierTopic === 'terms' && (
+                <div className="space-y-4 text-xs">
+                  <h3 className="text-xl font-bold text-white font-display">
+                    {lang === 'zh' ? '商业客户授权许可使用协议 (Terms)' : lang === 'it' ? 'Condizioni Generali di Servizio' : 'Terms of Commercial Service'}
+                  </h3>
+                  <div className="text-slate-400 leading-relaxed space-y-3.5 font-normal">
+                    <p className="font-semibold text-white">
+                      Licensing and service covenants governing modaui AI Commerce OS platforms.
+                    </p>
+                    <p>
+                      <b>1. License Grant:</b> We grant enterprise users a localized, non-transferable, non-exclusive digital license to host the modaui web point-of-sale layout on standard tablet/mobile environments with zero hardware lock restrictions.
+                    </p>
+                    <p>
+                      <b>2. Financial Conformity:</b> It is the user’s absolute responsibility to activate exact municipal taxes and IVA rates conforming to their operating region. modaui operates as a neutral digital gateway and is not legally liable for merchant underreporting or incorrect tax transmissions.
+                    </p>
+                    <p>
+                      <b>3. Zero High-% Intermediary Policies:</b> modaui guarantees never to charge secondary transactional volume commissions on your physical store sales. All flat rates are clear, foreseeable, and fully listed under our pricing structure with 30 days notice prior to monthly renewals.
+                    </p>
+                    <p>
+                      <b>4. Legal Forum:</b> Any litigation or dispute arising from this contract shall be submitted to the exclusive jurisdiction of the Courts of Milan (MI), Italy.
+                    </p>
+                  </div>
+                </div>
+              )}
+
+            </div>
+
+            {/* Footer */}
+            <div className="px-6 py-4 bg-[#05060d] border-t border-slate-900 flex justify-between items-center text-[10px] font-mono text-slate-500">
+              <span>© 2026 modaui.com Group. Registered Enterprise IT3908210398.</span>
+              <button 
+                onClick={() => setDossierTopic(null)} 
+                className="py-1 px-3 rounded bg-slate-950 text-slate-300 hover:text-white border border-slate-800 transition-colors cursor-pointer"
+              >
+                Close Dossier
+              </button>
+            </div>
           </div>
         </div>
       )}

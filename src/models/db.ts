@@ -77,6 +77,14 @@ export interface SchedulerTask {
   log: string[];
 }
 
+export interface LeadRecord {
+  id: string;
+  email: string;
+  companyName?: string;
+  source: string;
+  timestamp: string;
+}
+
 export interface DatabaseSchema {
   companies: EnterpriseCompany[];
   articles: Article[];
@@ -85,6 +93,7 @@ export interface DatabaseSchema {
   products: ProductCode[];
   schedulerTasks: SchedulerTask[];
   indexSubmissions: { url: string; time: string; status: string }[];
+  leads?: LeadRecord[];
 }
 
 // Initial Core SEED data
@@ -531,6 +540,31 @@ export class FileDatabase {
       this.data.indexSubmissions.pop();
     }
     this.save();
+  }
+
+  // Get CRM leads
+  public getLeads(): LeadRecord[] {
+    if (!this.data.leads) {
+      this.data.leads = [];
+    }
+    return this.data.leads;
+  }
+
+  // Save/Insert CRM lead
+  public saveLead(lead: Omit<LeadRecord, 'id' | 'timestamp'>) {
+    if (!this.data.leads) {
+      this.data.leads = [];
+    }
+    const newLead: LeadRecord = {
+      id: 'lead_' + Math.random().toString(36).substring(2, 11),
+      email: lead.email,
+      companyName: lead.companyName || '',
+      source: lead.source,
+      timestamp: new Date().toISOString().replace('T', ' ').substring(0, 19)
+    };
+    this.data.leads.unshift(newLead);
+    this.save();
+    return newLead;
   }
 
   // Bulk generated counts estimation

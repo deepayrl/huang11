@@ -1,16 +1,16 @@
 import { Article, LocalizedString } from '../models/db';
 
-export function compileArticleTemplate(article: Article, lang: keyof LocalizedString): string {
+export function compileArticleTemplate(article: Article, lang: keyof LocalizedString, categoryPath: string = 'blog'): string {
   const title = article.title[lang] || article.title['en'];
   const summary = article.summary[lang] || article.summary['en'];
   const content = article.content[lang] || article.content['en'];
-  const url = `https://modaui.com/${lang}/blog/${article.slug}`;
+  const url = `https://modaui.com/${lang}/${categoryPath}/${article.slug}`;
 
   // Multi-language Alternate hreflang tags for Google index matching
   const hreflangs = ['en', 'it', 'zh', 'fr', 'de', 'es'].map(l => 
-    `<link rel="alternate" hreflang="${l}" href="https://modaui.com/${l}/blog/${article.slug}" />`
+    `<link rel="alternate" hreflang="${l}" href="https://modaui.com/${l}/${categoryPath}/${article.slug}" />`
   ).join('\n  ');
-  const xDefault = `<link rel="alternate" hreflang="x-default" href="https://modaui.com/en/blog/${article.slug}" />`;
+  const xDefault = `<link rel="alternate" hreflang="x-default" href="https://modaui.com/en/${categoryPath}/${article.slug}" />`;
 
   // JSON-LD dynamic construction
   const blogJsonLd = {
@@ -49,8 +49,8 @@ export function compileArticleTemplate(article: Article, lang: keyof LocalizedSt
       {
         "@type": "ListItem",
         "position": 2,
-        "name": "Blog",
-        "item": `https://modaui.com/${lang}/blog`
+        "name": categoryPath.toUpperCase(),
+        "item": `https://modaui.com/${lang}/${categoryPath}`
       },
       {
         "@type": "ListItem",
@@ -65,7 +65,7 @@ export function compileArticleTemplate(article: Article, lang: keyof LocalizedSt
 <html lang="${lang}">
 <head>
   <meta charset="UTF-8">
-  <title>${title} | modaui Blog</title>
+  <title>${title} | modaui ${categoryPath.substring(0, 1).toUpperCase() + categoryPath.substring(1)}</title>
   <meta name="description" content="${summary}">
   <link rel="canonical" href="${url}">
   
@@ -92,7 +92,7 @@ export function compileArticleTemplate(article: Article, lang: keyof LocalizedSt
     <nav style="font-family: monospace; font-size: 13px; color: #64748b; margin-bottom: 25px; padding: 10px 15px; background: rgba(30, 41, 59, 0.4); border-radius: 8px; border: 1px solid #1e293b; line-height: 1;">
       <a href="/${lang === 'en' ? '' : lang}" style="color: #06b6d4; text-decoration: none; font-weight: bold;">modaui</a>
       <span style="margin: 0 8px;">&gt;</span>
-      <a href="/${lang}/blog" style="color: #06b6d4; text-decoration: none;">blog</a>
+      <a href="/${lang}/${categoryPath}" style="color: #06b6d4; text-decoration: none;">${categoryPath}</a>
       <span style="margin: 0 8px;">&gt;</span>
       <span style="color: #94a3b8;">${title}</span>
     </nav>

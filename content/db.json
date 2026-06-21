@@ -1,0 +1,644 @@
+{
+  "companies": [
+    {
+      "id": "roma-bistrot",
+      "slug": "roma-bistrot-case",
+      "name": "Roma Gourmet Bistrot",
+      "industry": "restaurant",
+      "cityId": "rome",
+      "revenue": "€1.2M",
+      "logo": "🍝",
+      "description": {
+        "en": "Fine-dining Italian bistro scaling guest throughput with autonomous menu checkouts.",
+        "it": "Bistrot gourmet nel centro di Roma che ottimizza i tempi di cassa con checkout da tavolo.",
+        "zh": "罗马精品美食街店，通过桌边自主 AI 扫码及合并账本实现 3 倍翻台率提升。",
+        "fr": "Bistro italien gastronomique optimisant le passage en caisse des clients.",
+        "de": "Gehobenes italienisches Bistro, das den Gäste-Durchsatz mit Kassenautomaten steigert.",
+        "es": "Bistró italiano de alta cocina que optimiza el flujo de clientes con pagos autónomos."
+      },
+      "caseStudyTitle": {
+        "en": "Bypassing Card Fees & Tax Audits with modaui OS",
+        "it": "Azzerare le commissioni POS ed emettere fatture senza stress",
+        "zh": "零抽成统一收单与欧洲本地财税 IVA 直连申报实战",
+        "fr": "Éviter les frais bancaires et simplifier la fiscalité avec modaui OS",
+        "de": "Kartengebühren umgehen & Steuerprüfungen vereinfachen mit modaui OS",
+        "es": "Evitar comisiones de tarjetas y automatizar el IVA con modaui OS"
+      },
+      "caseStudyBody": {
+        "en": "By adopting modaui payment triggers from QR codes, Roma Gourmet reduced their merchant acquirer commission from 1.8% down to 0.45%, while seamlessly writing transaction invoices directly to the Agenzia delle Entrate system.",
+        "it": "Adottando i pagamenti QR di modaui, Roma Gourmet ha ridotto le commissioni dal 1.8% allo 0.45%, trasmettendo automaticamente i corrispettivi all'Agenzia delle Entrate in tempo reale.",
+        "zh": "通过引入 modaui 的桌台扫码收单结算，Roma Gourmet 将商户手续费从 1.8% 降至 0.45%，同时订单在成交瞬间直接呈报至国家税务系统，开具完全合规的 IVA 电子发票。",
+        "fr": "En adoptant les paiements QR modaui, Roma Gourmet a réduit ses commissions de 1,8% à 0,45%, tout en envoyant automatiquement les reçus au système fiscal.",
+        "de": "Durch die QR-Zahlungen von modaui reduced Roma Gourmet seine Gebühren von 1,8% auf 0,45% und leitete die Transaktionsdaten direkt an das Finanzamt weiter.",
+        "es": "Con los pagos QR de modaui, Roma Gourmet redujo las comisiones bancarias del 1,8% al 0,45%, registrando cada factura al instante en la agencia tributaria."
+      },
+      "roiStats": "+34% Net Operational Margin, 0.45% Swipe Cost",
+      "metaTitle": {
+        "en": "How Roma Gourmet Bistro Cut Payment Intermediary Fees by 75%",
+        "it": "Come Roma Gourmet Bistro ha tagliato i costi di incasso POS del 75%",
+        "zh": "罗马餐饮大亨：摒弃传统 POS 机高额提成，直连电子计征税收",
+        "fr": "Comment Roma Gourmet Bistro a divisé par 4 ses frais de transaction",
+        "de": "Wie das Roma Gourmet Bistro Kassen-Vermittlungsgebühren um 75% senkte",
+        "es": "Cómo Roma Gourmet Bistro redujo un 75% las comisiones de su terminal"
+      },
+      "metaDesc": {
+        "en": "Read the case study of Roma Gourmet Bistro implementing automated multi-channel checkouts driven by modaui AI Commerce OS.",
+        "it": "Leggi il caso studio di Roma Gourmet Bistro che implementa i checkout automatici tramite la rete modaui.",
+        "zh": "探索罗马餐饮商户如何通过 modaui 智能商业操作系统构建零漏单、零人工对账的数字化财税清算闭环。",
+        "fr": "Découvrez comment Roma Gourmet Bistro a intégré les paiements QR de modaui.",
+        "de": "Erfahren Sie, wie das Roma Gourmet Bistro Kassenlösungen von modaui integrierte.",
+        "es": "Caso de éxito de Roma Gourmet Bistro usando el sistema autónomo de cobros de modaui."
+      }
+    }
+  ],
+  "articles": [
+    {
+      "id": "ai-payment-era",
+      "slug": "revolutionary-ai-payment-routes-for-smes",
+      "title": {
+        "en": "Autonomous Routing: Bypassing Legacy Merchant Swipe Fees for European SMEs",
+        "it": "Rotte di Pagamento Autonome: Come Disintermediare le Banche nel Commercio",
+        "zh": "自主支付路由系统：彻底终结第三方收单商1.5%+的高额利润提成",
+        "fr": "Routage Autonome : Comment contourner les frais bancaires élevés pour les PME",
+        "de": "Autonomes Routing: Wie KMUs hohe Kreditkarten-Vermittlungsgebühren vermeiden",
+        "es": "Rutas Autónomas: Cómo evitar las altas comisiones de los datáfonos tradicionales"
+      },
+      "summary": {
+        "en": "Traditional credit card processors drain retail and ecommerce margins. AI payment networks represent the future of low-overhead capital flow.",
+        "it": "I processori bancari tradizionali prosciugano i margini degli esercenti. Le reti intelligenti offrono flussi di capitale economici.",
+        "zh": "传统的收款结算商正在吞噬商业公司的利润。本白皮书为您揭秘 AI 自动路由如何打通一站式账务归集通道。",
+        "fr": "Les terminaux de paiement traditionnels étouffent les marges des commerçants. L'IA réinvente les flux de capitaux.",
+        "de": "Traditionelle Zahlungsanbieter schmälern die Margen im Handel. KI-Zahlungsnetzwerke sind die Zukunft des kostengünstigen Geldflusses.",
+        "es": "Los terminales de pago antiguos consumen el margen comercial. Las redes de cobros inteligentes son el futuro de los negocios."
+      },
+      "content": {
+        "en": "The structural evolution of digital commerce mandates that business transactions settle directly, eliminating middle tiers. With system networks deploying smart smart ledger matching, local merchant checkout can run at unprecedented cost efficiency. Business networks powered by modaui OS process transactions natively, mapping localized IVA thresholds and automatically publishing tax documents in fractions of a second.\n\nCombined with programmatic translation for multi-market landing pages, this creates secondary organic channels for businesses to attract and collect global customer checks seamlessly.",
+        "it": "L'evoluzione del commercio digitale impone che i pagamenti vengano saldati direttamente, superando intermediari costosi. Grazie alla rete modaui, gli incassi scorrono su rotaie dirette con commissioni basse dello 0,45%.\n\nIl sistema associa l'IVA dovuta e trasmette all'Agenzia delle Entrate, garantendo conformità locale senza bisogno di moduli manuali aggiuntivi.",
+        "zh": "数字商业演进规则要求消除资金流转中间层。借助 modaui 系统的智能记账网络，本地付款得以在毫秒级内直通银行，费率低至万分之四十五。系统会自动匹配跨国增值税税率，并在交易达成瞬间将发票呈送财政部门后台，大幅削减传统结算及合规申报的人工成本。",
+        "fr": "L'évolution du commerce numérique exige des flux directs sans intermédiaires. Avec modaui, les transactions se font à coût ultra-réduit, en calculant automatiquement la TVA locale et en l'envoyant aux autorités.",
+        "de": "Der moderne digitale Handel erfordert direkte Zahlungsströme. modaui ermöglicht Transaktionen zu Bruchteilen herkömmlicher Kosten, berechnet Steuersätze automatisch und übermittelt Daten in Echtzeit ans Finanzamt.",
+        "es": "La evolución digital exige transacciones directas. Con modaui, los cobros se gestionan al mínimo coste histórico, calculando el IVA local e informando a la entidad tributaria automáticamente."
+      },
+      "category": "AI Payment",
+      "author": "Director of FinTech Research",
+      "readingTime": "4 min read",
+      "publishedTime": "2026-06-20",
+      "keywords": [
+        "AI Commerce",
+        "AI Payment",
+        "SME Automation",
+        "Tax Compliance"
+      ],
+      "metaTitle": {
+        "en": "Autonomous Routing: Bypassing Legacy Merchant Swipe Fees for European SMEs",
+        "it": "Disintermediare i Pagamenti POS per PMI e Reti Commerciali",
+        "zh": "商用自主支付路由原理：多国本地财税合规一站式自动申报解析",
+        "fr": "Routage Autonome de Paiement : Moins de frais pour les commerçants",
+        "de": "Autonomes Zahlungsrouting für KMUs: Gebühren senken",
+        "es": "Evitar tarifas bancarias con el sistema de rutas de cobros modaui"
+      },
+      "metaDesc": {
+        "en": "Learn how the autonomous payment engine routes and clears funds at 0.45% base commission while satisfying strict compliance rules.",
+        "it": "Scopri come la rete modaui cancella i costi di cassa fissi ed emette scontrini telematici integrandosi con registratori fiscali.",
+        "zh": "深度剖析商业智能体如何通过本地银行清算网络绕过昂贵的中介结算，在 0.45% 资费下保持财税安全合规。",
+        "fr": "Apprenez comment modaui traite vos transactions à 0,45% de frais tout en simplifiant votre déclaration fiscale.",
+        "de": "Erfahren Sie, wie Sie mit dem modaui Zahlungssystem Ihre Gebühren auf 0,45% senken und Steuervorschriften einhalten.",
+        "es": "Descubra cómo automatizar cobros al 0,45% de tasa y declarar impuestos europeos en tiempo real."
+      }
+    },
+    {
+      "id": "ai-pos-italy",
+      "slug": "ai-pos-italy",
+      "title": {
+        "en": "AI-Powered Android/iOS POS Systems Dominate Italian Commercial Hubs",
+        "it": "Sistemi POS AI per Android/iOS Dominano i Centri Commerciali Italiani",
+        "zh": "AI 赋能的 Android/iOS 收银系统席卷全意各大商业与百货中心",
+        "fr": "Les Systèmes POS Animés par l'IA Dominent les Centres Commerciaux Italiens",
+        "de": "KI-gestützte POS-Systeme erobern italienische Einkaufszentren",
+        "es": "Sistemas TPV Inteligentes para Android e iOS Conquistan los Comercios en Italia"
+      },
+      "summary": {
+        "en": "Italian merchants are migrating from hardware-locked cash registers to AI-orchestrated cloud POS models under strict Agenzia delle Entrate rules.",
+        "it": "I commercianti italiani stanno migrando dai vecchi registratori ai modelli POS cloud approvati dall'Agenzia delle Entrate.",
+        "zh": "随着意财政局对电子数据合并稽查日益严格，传统闭门造车的收款机正面临新一代开放式云端收单架构的洗牌。",
+        "fr": "Les commerçants italiens abandonnent les caisses fermées pour des solutions POS dans le cloud conformes aux réglementations.",
+        "de": "Italienische Händler wechseln von herkömmlichen Kassen zu KI-gestützten Cloud-POS-Systemen.",
+        "es": "Los comercios italianos sustituyen sus antiguas cajas registradoras por sistemas TPV y comandas en la nube."
+      },
+      "content": {
+        "en": "The transition from mechanical fiscal devices to modern tablet-based terminal interfaces has accelerated under fiscal reporting reforms. Modaui OS facilitates this by pairing customizable touch layouts with active micro-services that ensure immediate print transmissions to physical tax devices while offering local offline backup capabilities.\n\nCombined with AI routing, swipe charges drop dramatically, shifting power back to retail operators.",
+        "it": "La transizione dai registratori fiscali tradizionali a moderni tablet e dispositivi Android è in piena rincorsa in tutta Italia. modaui OS unifica le vendite con un modulo di invio diretto dei corrispettivi fiscali in tempo reale.\n\nCon l'aiuto dell'intelligenza artificiale, le tariffe calano fino allo 0,45% fisso, restituendo linfa vitale ai margini di profitto dei commercianti di prossimità.",
+        "zh": "在意大利财税数字电子化的法规推动下，传统的重型硬件收银税控一体机，正被小巧轻捷的 iPad / Android 智能终端及云端操作系统所取代。modaui 系统内置符合意大利财政局 SDI 最新技术标准的自动校验核减模块，在进行商品扫码或餐厅并单付款的刹那，系统便即时生成加密的 XML 报文并完成电子账簿自动上传，彻底解决华商百货、大型超市深夜繁琐手工记账以及漏报税款的隐患。\n\n更具革命性的是，通过智能代收代付通道的动态路由和实时结算，每次刷卡开账的中间手续费费率更是打破了传统 POS 支付公司 1.5% 甚至更高比例的盘剥，降低到只需 0.45% 的超低成本，让每一单交易的利润都能完整留存给商户。",
+        "fr": "La transition vers les tablettes intelligentes s'accélère en Europe. modaui simplifie les déclarations fiscales tout en éliminant les intermédiaires de paiement coûteux.",
+        "de": "Der Wandel hin zu modernen Tablet-Kassen ist im vollen Gange. modaui ermöglicht eine nahtlose Steuerkonformität ohne hohe Terminal-Mieten.",
+        "es": "Sustituir datáfonos antiguos por tabletas táctiles agiliza los tiques. Con modaui, las transacciones operan con comisiones inferiores al medio punto."
+      },
+      "category": "AI Commerce",
+      "author": "Chief Product Officer",
+      "readingTime": "5 min read",
+      "publishedTime": "2026-06-21",
+      "keywords": [
+        "AI POS",
+        "Italy Retail",
+        "Lombardia Commerce",
+        "Fattura Elettronica"
+      ],
+      "metaTitle": {
+        "en": "AI-Powered Android/iOS POS Systems Dominate Italian Commercial Hubs",
+        "it": "POS Android ed iOS per la Ristorazione e il Retail in Italia",
+        "zh": "AI 智能收银 POS 席卷意大利华人商城实录与原理拆解",
+        "fr": "Systèmes de Caisse POS IA pour Android et iOS en Italie",
+        "de": "Optimale Android & iOS Kassen-POS Lösungen für Italien",
+        "es": "Terminales TPV Inteligentes para Android y Apple en Italia"
+      },
+      "metaDesc": {
+        "en": "Discover how modaui's native Android and iOS POS interfaces synchronize multi-store cash draws under Agenzia delle Entrate laws.",
+        "it": "Scopri come sincronizzare più casse fiscali su tablet Android o iPad inviando i report giornalieri all'AdE con un tocco.",
+        "zh": "探索 modaui 如何帮助零售及餐饮商户通过移动平板打建一站式、跨店铺的会员财务大盘，直连税控不设卡点。",
+        "fr": "Sachez comment synchroniser vos terminaux de point de vente physiques avec notre interface cloud unifiée.",
+        "de": "Erfahren Sie, wie Sie Ihre POS-Ladengeschäfte im Cloud-Dashboard verbinden und Abrechnungen exportieren.",
+        "es": "Sincronice fácilmente los puntos de cobro físicos con el inventario centralizado en la nube."
+      }
+    },
+    {
+      "id": "europe-payment",
+      "slug": "europe-payment",
+      "title": {
+        "en": "The Next Frontier: SEPA and Instant Bank Transfers Across Unified Europe",
+        "it": "La Nuova Frontiera dei Pagamenti: Transazioni Istantanee SEPA e Open Banking",
+        "zh": "欧洲统一即时银行转账：SEPA Instant 与 Open Banking 在商业结算中的大崛起",
+        "fr": "La Révolution des Paiements : Virements Instantanés SEPA et Open Banking",
+        "de": "Euro-Zahlungsrevolution: SEPA-Echtzeitüberweisungen im Aufwind",
+        "es": "La Nueva Era Bancaria: Transferencias Instantáneas SEPA en Comercios"
+      },
+      "summary": {
+        "en": "Instant clearing on SEPA payment protocols allows manufacturers and distributors to settle massive B2B invoices directly.",
+        "it": "I regolamenti istantanei sui conti SEPA consentono a fabbriche e distributori di riscuotere fatture di grandi importi a costo zero.",
+        "zh": "借助欧洲 SEPA 即时到账清算协议和开放银行接口，传统跨境批发分销的长阻期资金账册将走向秒级解算结算。",
+        "fr": "La compensation instantanée des flux SEPA permet aux grossistes de régler des factures importantes sans délai d'attente.",
+        "de": "SEPA-Echtzeitregulierung ermöglicht es Herstellern und Großhändlern, Rechnungen ohne Wartezeiten direkt zu begleichen.",
+        "es": "Las transferencias rápidas SEPA permiten a fábricas y distribuidores cobrar facturas instantáneas sin costes."
+      },
+      "content": {
+        "en": "Traditional cross-border invoice settlements take 2 to 5 business days, locking critical operational working capital in banking buffers. SEPA Instant Credit Transfers, integrated directly via modaui Open Banking Ledger endpoints, clear within 10 seconds. The invoice updates dynamically, notifying logistic depots to dispatch and automatically satisfying regulatory VAT disclosures.",
+        "it": "I bonifici tradizionali richiedono da 2 a 5 giorni lavorativi, bloccando capitale prezioso dei grossisti. I trasferimenti istantanei SEPA integrati in modaui saldano i conti in 10 secondi, sprigionando magazzino ed avvisando la logistica d'invio.",
+        "zh": "传统的跨国批发商户承汇结单通常需要 2 至 5 个工作日，使得大宗交易的流动周转资金经常滞留在银行中介账簿里。modaui 系统通过直接集成最新的欧洲 Open Banking 开放银行安全规范，将 SEPA Instant 闪连及即时到款通路融入账务系统，资金在 10 秒之内即可进入收款人银行账户。由于系统会自动进行财务与销售订单的智能对账对口，款项到账的顺间便会秒级指令海外多点立体配货仓进行分拣起运，打通物理商品流通与虚拟资金转账之间的所有割裂时延。",
+        "fr": "Les virements bancaires classiques prennent plusieurs jours. Les API Open Banking de modaui valident les fonds en moins de 10 secondes pour libérer les expéditions.",
+        "de": "Herkömmliche Auslandsüberweisungen behindern den Warenfluss. modaui beschleunigt Ihre Debitorenbuchhaltung durch automatische SEPA-Echtzeitabgleiche.",
+        "es": "Los cobros por transferencia suelen tardar días. Con la pasarela de Open Banking de modaui, las operaciones quedan saldadas en segundos."
+      },
+      "category": "AI Payment",
+      "author": "Fintech Strategy Council",
+      "readingTime": "4 min read",
+      "publishedTime": "2026-06-20",
+      "keywords": [
+        "SEPA Instant",
+        "Open Banking",
+        "B2B Wholesale",
+        "Liquidity Engine"
+      ],
+      "metaTitle": {
+        "en": "The Next Frontier: SEPA and Instant Bank Transfers Across Unified Europe",
+        "it": "SEPA Instante ed Open Banking per Aziende e Grossisti Europei",
+        "zh": "欧洲统一银行即时到账 SEPA 商业智能对账实操解析 | modaui 金融中台",
+        "fr": "Paiements SEPA Instant et Open Banking : Le guide des entreprises",
+        "de": "SEPA-Echtzeitüberweisungen & Open Banking für europäische KMUs",
+        "es": "Guía de cobros mediante transferencias SEPA instantáneas para pymes"
+      },
+      "metaDesc": {
+        "en": "An in-depth look at using direct Open Banking APIs instead of expensive card payment rails for European wholesale.",
+        "it": "Un approfondimento sull'utilizzo delle API bancarie dirette per ridurre i costi di incasso dei tuoi clienti rispetto dei circuiti standard.",
+        "zh": "资深金融顾问教您如何借助开放 API 底层通道取代高昂的跨国卡刷手续费，大宗交易安全低摩擦回笼资金。",
+        "fr": "Découvrez comment utiliser les connexions bancaires directes pour éviter les commissions sur cartes.",
+        "de": "Erfahren Sie, wie Sie Zahlungen im Großhandel über direkte Bankschnittstellen abwickeln und Transaktionsgebühren sparen.",
+        "es": "Evite comisiones abusivas por tarjetas y reciba fondos directos mediante transferencias inmediatas."
+      }
+    },
+    {
+      "id": "milan-fashion-week",
+      "slug": "milan-fashion-week",
+      "title": {
+        "en": "Omnichannel Runway CRM at Milan Fashion Week",
+        "it": "CRM Omnicanale in Passerella alla Milano Fashion Week",
+        "zh": "米兰时装周秀场直通：品牌零售全渠道 VIP 运营与会员数字化实战",
+        "fr": "CRM Omnicanal en Passerelle à la Fashion Week de Milan",
+        "de": "Omnichannel-CRM auf dem Laufsteg der Mailänder Modewoche",
+        "es": "CRM Omnicanal en las Pasarelas de la Semana de la Moda de Milán"
+      },
+      "summary": {
+        "en": "How top-tier fashion luxury labels capture, segment, and reward wholesale buyers and VIP collectors using real-time retail CRM.",
+        "it": "Come i grandi marchi del lusso catturano, segmentano e coccolano i buyers VIP durante la sfilata usando CRM intelligenti.",
+        "zh": "在巴黎、米兰时装大秀举办之际，国际奢侈品牌如何运用全渠道数字 CRM 进行大河买手以及核心 VIP 的到店成交跟踪。",
+        "fr": "Comment les marques de couture identifient, séduisent et fidélisent les acheteurs internationaux à l'aide d'outils CRM intégrés.",
+        "de": "Wie Modemarken Einkäufer und VIP-Kunden direkt auf Modenschauen erfassen und binden.",
+        "es": "Cómo las marcas de ropa identifican y fidelizan a compradores VIP durante desfiles de moda."
+      },
+      "content": {
+        "en": "Milan is the absolute epicenter of garment innovation and high-end fashion craftsmanship. To manage the immense surge of purchase orders and private showroom viewings during fashion week, brands cannot rely on separate databases. Modaui CRM unifies wholesale pre-orders, custom measurements, and premium POS payment flows. Buyers secure allocation slots directly from an iPad interface connected to local fulfillment houses.",
+        "it": "Milano è l'epicentro della moda e della creatività tessile. Per gestire l'afflusso di buyers, i marchi usano il CRM unificato di modaui per gestire ordini preliminari, misure esclusive e spedizioni prioritarie in 6 lingue.",
+        "zh": "米兰是世界服装工艺设计与高奢订制的终极重镇。在时装周期间，面对如潮涌来的买手采购合同、专属秀后商洽以及私人订制量体数据，老旧割裂的信息系统极易丢失关键销售机会。modaui 跨端 CRM 智能系统，能将线下展厅、展卡扫码订货与全球银行收单无缝粘合。资深买手在平板触摸屏上确认款式的同时，系统会根据其历年客单价、到账周期和配比权重，自动完成阶梯额度评级并通知中国温州或意大利工厂锁产发货，做到毫无卡点。",
+        "fr": "La Fashion de Milan exige une réactivité absolue. Le CRM de modaui intègre les pré-commandes de grossistes et les paiements prioritaires en un clic.",
+        "de": "Die Mailänder Modewoche erfordert höchste Flexibilität. modaui vernetzt Vorbestellungen von Einkäufern direkt mit den Produktionskapazitäten.",
+        "es": "Durante la semana de la moda en Milán la velocidad es imperativa. modaui recopila pedidos al por mayor y centraliza los datos de entrega."
+      },
+      "category": "AI CRM",
+      "author": "High-Fashion Relations Partner",
+      "readingTime": "5 min read",
+      "publishedTime": "2026-06-19",
+      "keywords": [
+        "Milan Fashion Week",
+        "Fashion CRM",
+        "Retail Luxury",
+        "Omnichannel B2B"
+      ],
+      "metaTitle": {
+        "en": "Omnichannel Runway CRM at Milan Fashion Week",
+        "it": "Sistema CRM per Boutiques e Showroom di Moda Milano Luxury",
+        "zh": "时装品牌展厅多国买手精细化 CRM 实操录：如何运用 modaui 降本增益",
+        "fr": "CRM Haute Couture et Showroom de Luxe à Milan",
+        "de": "Showroom-CRM und Großhandels-Bestellsystem für Mailänder Luxusmarken",
+        "es": "Herramienta CRM para desfiles y boutiques de alta costura en Milán"
+      },
+      "metaDesc": {
+        "en": "Learn how luxury brands align physically disconnected showrooms with global ERP dispatch registers under high-traffic runway peak conditions.",
+        "it": "Scopri come i brand più celebri allineano lo showroom e i depositi logistici in tempo reale con le soluzioni modaui.",
+        "zh": "了解奢侈时装集团如何通过 modaui 系统打通跨区域的备货大盘，将秀后即售、VIP 私人定制体验提升到极致。",
+        "fr": "Sachez comment l'ERP modaui unifie vos flux de stocks entre usines de confection et salons de vente.",
+        "de": "Verbinden Sie Ihre Offline-Showrooms nahtlos mit dem intelligenten Bestandsmanagement von modaui.",
+        "es": "Sincronice el stock exclusivo de showroom con las órdenes de fábrica en tiempo real."
+      }
+    },
+    {
+      "id": "what-is-pos",
+      "slug": "what-is-pos",
+      "title": {
+        "en": "Demystifying Modern Point of Sale (POS) Systems: A Comprehensive Retail Guide",
+        "it": "Cos'è un Sistema POS? Guida Completa alla Cassa Digitalizzata per Esercenti",
+        "zh": "什么是 POS 收银系统？现代数字商业终端知识大普及与选型盲区科普",
+        "fr": "Qu'est-ce qu'un Système de Caisse POS ? Guide complet pour commerçants",
+        "de": "Was ist ein Kassensystem (POS)? Der ultimative Leitfaden für Händler",
+        "es": "¿Qué es un Sistema TPV? Guía práctica de selección para comercios"
+      },
+      "summary": {
+        "en": "From hardware components to automated ledger APIs, learn everything required to pick the right POS infrastructure.",
+        "it": "Dall'hardware di cassa alle stampanti fiscali e invio AdE, scopri come scegliere la cassa ideale e quanto costa.",
+        "zh": "从传统机身屏幕到最新一代 API 账本网络，一站式帮您解构真正降本增效的智能收银系统选择方案。",
+        "fr": "Du terminal physique aux API de gestion des ventes, l'essentiel à s'avoir pour équiper votre magasin.",
+        "de": "Von Bondruckern bis zu Kassen-Schnittstellen: So wählen Sie die passende Kassensoftware aus.",
+        "es": "Desde las impresoras térmicas hasta los informes en la nube, evite errores al elegir su TPV comercial."
+      },
+      "content": {
+        "en": "A Point of Sale (POS) system represents the primary operational nexus of any commercial business. It is more than just a drawer to store banknotes; it is the center of inventory tracking, fiscal reconciliation, and loyalty activation. Selecting a non-compliant POS leads to bookkeeping bottlenecks. Modern frameworks like modaui provide lightweight web-based interfaces that run anywhere with zero local maintenance costs.",
+        "it": "Il Punto Vendita (POS) è il fulcro operativo di qualsiasi negozio o ristorante. Oltre a custodire i contanti, governa l'inventario, emette tessere fedeltà e rispetta le normative statali. Scegliere una cassa obsoleta comporta sanzioni fiscali. I framework moderni come modaui girano su qualsiasi tablet o cellulare azzerando la manutenzione.",
+        "zh": "Point of Sale 销售收银终端（俗称 POS 机）是商铺运营的咽喉重地。当代 POS 早已不仅是暂存钞票的安全抽屉，而是囊括库存变化流向、财税合规送审、连锁会员生命周期管理（LTV）的多维数据中枢。挑选一套过时或未针对本地财税合规进行针对性技术优化的 POS，会给商户带来无尽的人工手工录票、漏单以及税务行政局罚单的无妄之灾。modaui 开创性的 Web-Based 开放式收银架构让 system 能在任意低功耗平板、iPhone或双屏一体机上流畅运行，无需雇佣任何 IT 维护团队，开箱即懂，自带云端备份系统。",
+        "fr": "Le Point de Vente (POS) est le cœur battant de votre boutique. Bien plus qu'un tiroir-caisse, il centralise vos stocks et la conformité fiscale. Choisir un système dépassé crée des goulots de facturation. Les technologies modernes telles que modaui fonctionnent partout sans frais d'installation.",
+        "de": "Ein Point of Sale (POS) Kassenplatz regelt den gesamten Ablauf im Geschäft. Ein modernes Kassensystem wie modaui steuert Bestände und steuerliche Meldungen unkompliziert per Webbrowser auf jedem Gerät.",
+        "es": "El Terminal de Punto de Venta (TPV) es el corazón de su comercio. modaui traslada toda la lógica de tiques a una app web moderna que elimina el mantenimiento local."
+      },
+      "category": "AI CRM",
+      "author": "Retail Systems Architect",
+      "readingTime": "5 min read",
+      "publishedTime": "2026-06-20",
+      "keywords": [
+        "POS Guide",
+        "Cash Register",
+        "Retail Software Setup",
+        "Hardware Checklist"
+      ],
+      "metaTitle": {
+        "en": "Demystifying Modern Point of Sale (POS) Systems: A Comprehensive Retail Guide",
+        "it": "Guida alla Scelta dei Registratori di Cassa e POS in Italia 2026",
+        "zh": "什么是 POS 智能收银系统？欧洲华人商户降本增效选型红黑榜一览",
+        "fr": "Régle de Base pour Choosing son Système POS de Magasin",
+        "de": "Wie funktioniert ein modernes POS-Kassensystem? Definition & Kriterien",
+        "es": "Qué es un terminal TPV de cobro y cómo elegir el mejor para su pyme"
+      },
+      "metaDesc": {
+        "en": "Are you opening a boutique, bar, or grocery retail outlet? Read our comprehensive buyer guide to modern cash registers.",
+        "it": "Stai per aprire un locale, bar o alimentari? Leggi la guida completa per acquistare la cassa ideale conforme ai scontrini telematici.",
+        "zh": "无论您是筹备开业百货大楼、日餐日餐馆、烘焙工坊还是服装陈列展厅，本技术指南帮您梳理最具实效的收银财税一体化闭环结构。",
+        "fr": "Vous ouvrez un commerce de détail ? Nos architectes vous expliquent comment équiper vos points d'encaissement.",
+        "de": "Erfahren Sie, wie moderne Kassenlösungen Ihre Arbeit erleichtern und den Bezahlvorgang für Ihre Kunden verkürzen.",
+        "es": "¿Va a emprender un nuevo negocio? Compare características esenciales y evite costes ocultos en datáfonos."
+      }
+    },
+    {
+      "id": "what-is-vat",
+      "slug": "what-is-vat",
+      "title": {
+        "en": "Navigating Value Added Tax (VAT / IVA) for Mid-sized European Enterprises",
+        "it": "Guida Pratica all'IVA Europea e Nazionale: Aliquote e Fatturazione Intracomunitaria",
+        "zh": "探秘增值税 (VAT / IVA)：欧洲跨境商户如何巧妙利用跨国税制与智能匹配保障合规利润",
+        "fr": "TVA Européenne et Facturation Intracommunautaire : Guide complet des taux",
+        "de": "Mehrwertsteuer (MwSt) in Europa: Erklärung & Sätze für B2B-Händler",
+        "es": "Guía Práctica de IVA en Europa: Tipos impositivos y declaración simplificada"
+      },
+      "summary": {
+        "en": "An objective study of Value Added Tax (VAT) rate mapping, intracommunal exemptions (VIES), and digital automatic declarations.",
+        "it": "Un focus pratico sulle aliquote IVA (4%, 10%, 22%), l'esenzione intracomunitaria e l'invio automatizzato all'anagrafe tributaria.",
+        "zh": "深度剖析 4%、10%、22% 等多级增值税率、欧盟跨国免税申报（VIES 校验）以及智能会计报表自动归集原理。",
+        "fr": "Une analyse claire de la TVA intracommunautaire, des exonérations et de la centralisation des rapports douaniers.",
+        "de": "Eine verständliche Übersicht über europäische Umsatzsteuersätze, OSS-Verfahren und steuerfreie innergemeinschaftliche Lieferungen.",
+        "es": "Entienda los tramos de IVA, las operaciones intracomunitarias exentas y cómo declarar tiques al instante."
+      },
+      "content": {
+        "en": "VAT/IVA compliance represents one of the largest regulatory overhead burdens for businesses selling within the European Union. Each territory governs localized schedules, requiring accurate product code bookkeeping. Direct tax integration via API pipelines (such as modern modaui tax modules) eliminates errors by inspecting the buyer VAT number on checkout and dynamically applying intra-union tax exemptions.",
+        "it": "La conformità IVA rappresenta spesso il grattacapo principale delle imprese europee. Ogni stato detiene aliquote diverse. La cassa modaui interroga direttamente il database europeo VIES durante l'acquisto, applicando l'esenzione IVA intracomunitaria per i clienti B2B registrati.",
+        "zh": "增值税（欧盟体系内称为 VAT，意大利本土简称为 IVA）是所有在欧洲大陆长足耕耘的商铺极其严苛的技术性门槛。每个国家的增值税率和食品赏味级减免层级均不相同，一旦分类申报出错，商户将面临税务局长达数年的回溯性补税重罚。modaui 内置的动态计税芯片，不仅支持根据商品的物料 SKU 分类进行 4%、10% 或 22% 增值税自动归并，更会在跨国 B2B 批发结账时，自动在毫秒级内通过 VIES (欧盟增值税信息交换系统) 安全通道比对买家的税号。如该税号具备合规免税资质，系统将瞬间免去该代销发票的增值税课税额，直接出具内嵌合规豁免注释的电子会计账簿，为华商跨国物流大批量空运、船运免去重重繁复手续。",
+        "fr": "Le respect des taux de TVA européens est essentiel. Le logiciel modaui interroge directement le registre VIES pour vérifier le numéro fiscal des clients et appliquer l'autoliquidation.",
+        "de": "Die Einhaltung der korrekten Mehrwertsteuersätze ist für europäische Händler komplex. Das Umsatzsteuerrechner-Modul von modaui prüft automatisch Ust-IdNrn im VIES-Portal, um steuerfreie Rechnungen zu erstellen.",
+        "es": "El cumplimiento del IVA intracomunitario suele devorar horas de administración. modaui comprueba en milisegundos la validez del NIF-IVA de sus clientes."
+      },
+      "category": "AI Payment",
+      "author": "International Audit Consultant",
+      "readingTime": "6 min read",
+      "publishedTime": "2026-06-18",
+      "keywords": [
+        "VAT Rate",
+        "IVA Guide",
+        "VIES Lookup",
+        "Tax Automation"
+      ],
+      "metaTitle": {
+        "en": "Navigating Value Added Tax (VAT / IVA) for Mid-sized European Enterprises",
+        "it": "IVA e Dichiarazione Fatture Intracomunitarie VIES con modaui",
+        "zh": "详解欧盟增值税 IVA 底层逻辑、免税条件（VIES）与智能自动化核算 | 华商避坑",
+        "fr": "Régles de Facturation avec TVA et Exonérations en Europe",
+        "de": "Umsatzsteuer-Erklärung & innergemeinschaftliche Lieferungen leicht gemacht",
+        "es": "Cómo funciona el recargo de equivalencia y el IVA intracomunitario en moda"
+      },
+      "metaDesc": {
+        "en": "Avoid audit penalties. Learn how modaui auto-calculates intra-union export exemptions based on active VAT IDs.",
+        "it": "Evita sanzioni fiscali. Scopri come l'algoritmo di modaui verifica le credenziali del cliente B2B e gestisce la fattura sdi esente IVA.",
+        "zh": "全面解答商户在应对增值税审查时最常碰到的高危盲区，教您如何巧妙运用多终端自动计税工具构建完美的财务防护网。",
+        "fr": "Évitez les erreurs sur vos déclarations de TVA en confiant les vérifications douanières à notre module fiscal.",
+        "de": "Vermeiden Sie Nachzahlungen beim Finanzamt. modaui automatisiert die Zuordnung von Steuersätzen für EU-Kunden.",
+        "es": "Evite multas por facturación incorrecta. Deje que el motor de modaui automatice el cálculo de tasas."
+      }
+    },
+    {
+      "id": "vat-calculator",
+      "slug": "vat-calculator",
+      "title": {
+        "en": "Free Dynamic European VAT & IVA Compliance Calculator Tool",
+        "it": "Strumento Gratuito di Calcolo IVA e Scorporo Online 2026",
+        "zh": "在线免费多国增值税 (IVA / VAT) 自动计算器与税金快速分离工具",
+        "fr": "Calculateur de TVA Européenne : Calculez vos Montants HT et TTC",
+        "de": "Mehrwertsteuer-Rechner: Brutto-Netto-Beträge online kalkulieren",
+        "es": "Calculadora de IVA Online Gratuita: tramos del 4%, 10% y 21%"
+      },
+      "summary": {
+        "en": "An interactive utility to quickly verify net-to-gross ratios, local VAT rates, and corresponding electronic transmission payloads.",
+        "it": "Un calcolatore interattivo per scorporare l'IVA (4%, 10%, 22%) e verificare la conformità telematica dello scontrino.",
+        "zh": "一款完全免费且支持多客户端交互的跨国 IVA 计税、含税、未税及一键反向拆税多维度计算器工具。",
+        "fr": "Un utilitaire interactif pour obtenir facilement des montants hors taxes et toutes taxes comprises pour l'Europe.",
+        "de": "Ein praktischer Online-Rechner zur Überprüfung von Netto- und Bruttobeträgen für Händler.",
+        "es": "Herramienta digital interactiva para calcular IVA repercutido y soportado con soporte de tique."
+      },
+      "content": {
+        "en": "Calculating fiscal thresholds across overlapping European territories manually is a source of severe booking errors. We provide this free interactive browser utility to let merchants instantly extract raw net prices, total taxes due, and check XML structures for tax reporting.\n\nUse this as an interactive tool directly inside modaui to optimize your tax setups.",
+        "it": "Calcolare i corrispettivi e scorporare l'IVA a mano porta inevitabilmente a errori contabili. Forniamo questo tool gratuito per estrarre l'importo imponibile dall'IVA al 4%, 10% o 22% in un soffio, pronto per l'invio all'SDI.\n\nQuesto calcolatore è integrato nativamente nelle soluzioni modaui.",
+        "zh": "在欧洲多国错综复杂的税务豁免与加成体系下，通过人工纸笔或常规计算器进行大批量出料税费计算，是财务失误的主要源泉。modaui 为各位华商提供了这款全交互的增值税（IVA / VAT）快速解算计算器。只需输入开票金额并选择目标国瓦数档位（例如意大利 4% 面食农业，10% 堂食点心，22% 百货运输），系统将毫秒级分账剥离出原始除税基数、应缴税负总额以及完全对应的 XML 电子印花税结构负载。本工具完美地嵌入在平台“免费 AI 工具箱”板块，并且已直连后台计税，帮助您最大化减轻账务重荷。",
+        "fr": "Calculer manuellement les taxes de vente pour différentes régions européennes est fastidieux. Notre calculateur interactif vous aide à séparer rapidement les prix HT et TTC pour n'importe quel taux.",
+        "de": "Die manuelle Steuerberechnung für verschiedene EU-Lieferungen ist fehleranfällig. Unser Onlinerechner trennt Brutto- und Nettobeträge im Handumdrehen auf.",
+        "es": "Calcular los impuestos de tiques de forma manual multiplica los errores. Utilice nuestra herramienta para separar la base imponible del IVA."
+      },
+      "category": "AI Payment",
+      "author": "Compliance Engineering Team",
+      "readingTime": "3 min read",
+      "publishedTime": "2026-06-21",
+      "keywords": [
+        "VAT Calculator",
+        "IVA Scorporo",
+        "Tax Tool Online",
+        "Free Compliance"
+      ],
+      "metaTitle": {
+        "en": "Free Dynamic European VAT & IVA Compliance Calculator Tool",
+        "it": "Calcolatore Gratuito Scorporo IVA 22% 10% 4% Online",
+        "zh": "免费多国 IVA 实时测算拆税计算器工具 | modaui 商业智慧",
+        "fr": "Calculateur de TVA Gratuit : Taux HT, TVA, TTC Interactif",
+        "de": "Kostenloser Mehrwertsteuer- und Vorsteuer-Rechner für Händler",
+        "es": "Calculadora de IVA y recargo de equivalencia online gratis"
+      },
+      "metaDesc": {
+        "en": "Instantly separate net and total sum with our fully automated calculator. Supports all official EU VAT brackets.",
+        "it": "Scorpora l'IVA del 22%, 10% o 4% in tempo reale. Ottieni l'imponibile e il codice di trasmissione AdE all'istante.",
+        "zh": "免注册一键自动解算并打印除税底数和对应的国家申报，全面覆盖欧盟主流国家不同行业的差异性税级档次。",
+        "fr": "Sachez immédiatement extraire les montants de taxes de vos factures grâce à notre module interactif en ligne.",
+        "de": "Ermitteln Sie Mehrwertsteuer und Umsatzsteuer präzise online. Ideal für die Rechnungsprüfung.",
+        "es": "Obtenga la base imponible y el importe del impuesto al instante. Compatible con las haciendas europeas."
+      }
+    }
+  ],
+  "cities": [
+    {
+      "id": "rome",
+      "name": {
+        "en": "Rome",
+        "it": "Roma",
+        "zh": "罗马",
+        "fr": "Rome",
+        "de": "Rom",
+        "es": "Roma"
+      },
+      "country": "Italy",
+      "seoTuning": {
+        "en": "Integrating local restaurants and hospitality chains in the Lazio region with automated tax audit interfaces.",
+        "it": "Integrazione dei scontrini telematici e registratori di cassa per ristoranti nel Lazio.",
+        "zh": "针对意大利拉齐奥大区餐企、奢轻零售商户进行本地 IVA 与防瞒报系统一站式连接。",
+        "fr": "Intégration fiscale locale pour les commerces de la région de Rome.",
+        "de": "Lokale Steuerintegration für Unternehmen in der Region Rom.",
+        "es": "Integración fiscal local para los comercios de hostelería de Roma."
+      }
+    },
+    {
+      "id": "milan",
+      "name": {
+        "en": "Milan",
+        "it": "Milano",
+        "zh": "米兰",
+        "fr": "Milan",
+        "de": "Mailand",
+        "es": "Milán"
+      },
+      "country": "Italy",
+      "seoTuning": {
+        "en": "Powering smart luxury apparel CRM nodes and multi-warehouse logistics for fashion houses.",
+        "it": "Servendo showroom di moda con CRM omnicanale conforme e magazzini intelligenti.",
+        "zh": "为米兰时尚showroom及多地联仓配货体系提供 GDPR 合规的全域数字资产会员中台。",
+        "fr": "Gestion omnicanale et logistique de luxe pour les marques milanaises.",
+        "de": "Luxus-Apparel CRM und Logistik für Mailänder Modehäuser.",
+        "es": "Gestión omnicanal de clientes y logística avanzada para boutiques en Milán."
+      }
+    }
+  ],
+  "industries": [
+    {
+      "id": "retail",
+      "name": {
+        "en": "Retail & Apparel",
+        "it": "Retail e Abbigliamento",
+        "zh": "线下连锁与轻奢零售",
+        "fr": "Retail & Prêt-à-porter",
+        "de": "Einzelhandel & Bekleidung",
+        "es": "Comercio Minorista & Moda"
+      },
+      "description": {
+        "en": "Unifying brick-and-mortar storefronts with dynamic multi-lingual online platforms.",
+        "it": "Unificare negozi fisici ed e-commerce in un'unica anagrafica clienti conforme.",
+        "zh": "打通线下实体柜台与多语种线上自建店的物理壁垒，数据高度凝聚。",
+        "fr": "Unifier les boutiques physiques et les plateformes en ligne.",
+        "de": "Verbindung von physischen Geschäften mit mehrsprachigen Onlineshops.",
+        "es": "Unificar las tiendas físicas y la presencia de comercio electrónico."
+      },
+      "painPoints": {
+        "en": "High payment transaction swipe markup, slow local stock audit, fragmented CRM profiles.",
+        "it": "Alte commissioni POS, inventario difficile da allineare, dati clienti sparsi.",
+        "zh": "线下刷卡抽钱高、库存积压统计混乱、线上线下会员画像断裂无法盘活。",
+        "fr": "Coût de transaction élevé, gestion des stocks complexe, profils clients dispersés.",
+        "de": "Hohe Kartengebühren, ungenaue Lagerbestände, verstreute Kundendaten.",
+        "es": "Comisiones abusivas de datáfonos, auditoría lenta de inventario, perfiles de clientes aislados."
+      },
+      "modauiSolution": {
+        "en": "Direct QR billing at 0.45% flat rate, automated cross-channel stock refills, and localized GDPR database ledger.",
+        "it": "Incassi QR diretti allo 0.45%, rifornimenti automatici, e database sicuro conforme.",
+        "zh": "0.45% 统一收收单触点、AI 自动仓储临界采购下单、GDPR 级会员账册系统。",
+        "fr": "Facturation QR directe à 0,45%, réapprovisionnement automatique et base de données RGPD.",
+        "de": "QR-Zahlungen für 0,45%, automatisierte Nachbestellungen und sichere DSGVO-Datenbank.",
+        "es": "Pagos QR directos al 0,45%, reposición autónoma de mercancías y base de datos con RGPD."
+      }
+    }
+  ],
+  "products": [
+    {
+      "id": "ai-pos-checkout",
+      "name": {
+        "en": "modaui Omni POS Terminal",
+        "it": "modaui Cassa Unificata POS",
+        "zh": "modaui 智能多点收单收银中台",
+        "fr": "Terminal modaui Omni POS",
+        "de": "modaui Omni-Kassen-Terminal",
+        "es": "Terminal modaui Omni TPV"
+      },
+      "priceModel": {
+        "en": "€39/month flat fee",
+        "it": "€39/mese fisso",
+        "zh": "包月 €39 固定，免流流水抽点",
+        "fr": "39 €/mois fixe",
+        "de": "39 €/Monat Flat",
+        "es": "39 €/mes tarifa plana"
+      },
+      "features": [
+        {
+          "en": "0.45% clearing fee",
+          "it": "Commissione 0.45%",
+          "zh": "本地银行秒级开账 (0.45%)",
+          "fr": "Frais de compensation 0,45%",
+          "de": "0,45 % Clearing-Gebühr",
+          "es": "Tasa de compensación 0,45%"
+        },
+        {
+          "en": "Automated Tax receipt",
+          "it": "Invio scontrino telematico",
+          "zh": "发票直连国家财政总会后台",
+          "fr": "Reçus fiscaux automatisés",
+          "de": "Automatischer Steuerbeleg-Versand",
+          "es": "Emisión automática de tique fiscal"
+        }
+      ],
+      "description": {
+        "en": "A robust digital POS running on standard iPad/Android browsers with zero local installs. Integrated with active network printers.",
+        "it": "Cassa digitale che gira su tablet Android ed iPad senza installazioni. Integrata con stampanti fiscali telematiche.",
+        "zh": "运行于任何平板/手机浏览器的轻量化销售系统，无需繁重配置，开箱即懂，直接对接本地电子发票打印机。",
+        "fr": "Un terminal de caisse numérique moderne sur tablette avec zéro installation nécessaire.",
+        "de": "Ein robustes digitales Kassensystem für jeden Browser ohne lokale Installation.",
+        "es": "TPV digital moderno que funciona en cualquier tableta o navegador sin instalación local."
+      }
+    }
+  ],
+  "schedulerTasks": [
+    {
+      "id": "ai-blog-crawler",
+      "name": "AI Active Keyword Crawler (Gemini Model Search)",
+      "intervalMinutes": 1440,
+      "lastRun": "2026-06-21 00:00:00",
+      "status": "success",
+      "log": [
+        "Crawl initiated",
+        "Identified 12 trending search intents in Retail",
+        "Enqueued for generation"
+      ]
+    },
+    {
+      "id": "ai-auto-generation",
+      "name": "AI Page Auto-Generator Pipeline (Gemini 3.5-Flash)",
+      "intervalMinutes": 1440,
+      "lastRun": "2026-06-21 02:30:00",
+      "status": "success",
+      "log": [
+        "Initialized modular builder",
+        "Assembled templates: enterprise, cities, industries",
+        "Re-synthesized 164 programmatic localized paths"
+      ]
+    },
+    {
+      "id": "i18n-auto-translation",
+      "name": "Multi-Language Deep Translation Sync",
+      "intervalMinutes": 1440,
+      "lastRun": "2026-06-21 03:00:00",
+      "status": "success",
+      "log": [
+        "Fetched untranslated records",
+        "Completed translation checks for fr, de, es",
+        "Hreflang header indices built successfully"
+      ]
+    },
+    {
+      "id": "sitemap-auto-update",
+      "name": "Sitemap.xml & Robots.txt Auto-Refresher",
+      "intervalMinutes": 180,
+      "lastRun": "2026-06-21 04:00:00",
+      "status": "success",
+      "log": [
+        "Gathered 145,280 pages dynamically",
+        "Saved Sitemap.xml to disk",
+        "robots.txt verified: OK"
+      ]
+    },
+    {
+      "id": "google-index-submit",
+      "name": "Google Indexing API Real-Time Submission",
+      "intervalMinutes": 30,
+      "lastRun": "2026-06-21 04:15:00",
+      "status": "success",
+      "log": [
+        "Sent 15 newly generated URLs",
+        "Google API Response: 200 SUCCESS",
+        "All indexes live in index queue"
+      ]
+    }
+  ],
+  "indexSubmissions": [
+    {
+      "url": "https://modaui.com/company/roma-bistrot-case",
+      "time": "2026-06-21 04:15:00",
+      "status": "SUBMITTED"
+    },
+    {
+      "url": "https://modaui.com/city/rome",
+      "time": "2026-06-21 04:15:10",
+      "status": "SUBMITTED"
+    },
+    {
+      "url": "https://modaui.com/industry/retail",
+      "time": "2026-06-21 04:15:20",
+      "status": "INDEXED"
+    },
+    {
+      "url": "https://modaui.com/blog/revolutionary-ai-payment-routes-for-smes",
+      "time": "2026-06-21 04:15:30",
+      "status": "INDEXED"
+    }
+  ]
+}
